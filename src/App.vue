@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
 <template>
-  <h1 class="text-3xl font-bold underline hover:text-red-500">Hello world!</h1>
+  <root-layout>
+    <router-view />
+  </root-layout>
 </template>
+<script setup lang="ts">
+import RootLayout from '@/layouts/RootLayout.vue'
+</script>
