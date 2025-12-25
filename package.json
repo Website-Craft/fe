@@ -10,7 +10,7 @@
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
-    "prepare": "husky"
+    "prepare": "test -d .git && husky install || true"
   },
   "dependencies": {
     "@primeuix/themes": "^2.0.2",
