@@ -9,8 +9,7 @@
     "preview": "vite preview",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/",
-    "prepare": "husky"
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
