@@ -9,8 +9,7 @@
     "preview": "vite preview",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/",
-    "prepare": "test -d .git && husky install || true"
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "@primeuix/themes": "^2.0.2",
