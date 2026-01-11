@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card shadow-md">
     <Menubar :model="items">
       <template #item="{ item, props }">
         <router-link
@@ -15,14 +15,14 @@
             class="flex align-items-center p-menuitem-link"
             :class="{ 'router-link-active': isActive }"
           >
-            <span :class="['p-menuitem-icon', item.icon]" />
-            <span class="p-menuitem-text">{{ item.label }}</span>
+            <span :class="['p-menuitem-icon font-medium', item.icon]" />
+            <span class="p-menuitem-text font-medium">{{ item.label }}</span>
           </a>
         </router-link>
 
         <a v-else v-bind="props.action" class="flex align-items-center p-menuitem-link">
-          <span :class="['p-menuitem-icon', item.icon]" />
-          <span class="p-menuitem-text">{{ item.label }}</span>
+          <span :class="['p-menuitem-icon font-medium', item.icon]" />
+          <span class="p-menuitem-text font-medium">{{ item.label }}</span>
           <i v-if="item.items" class="pi pi-angle-down ml-auto" />
         </a>
       </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full max-w-7xl mx-auto overflow-hidden rounded-2xl shadow-2xl bg-black/50">
+  <div class="relative w-full md:max-w-[85%] mx-auto overflow-hidden rounded-2xl shadow-2xl bg-black/50">
     <!-- ================= MAIN SLIDER ================= -->
     <div class="relative aspect-[16/9] overflow-hidden">
       <div

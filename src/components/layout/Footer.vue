@@ -1,5 +1,7 @@
 <template>
-  <footer class="relative bg-gradient-to-br from-gray-900 to-gray-800 text-white overflow-hidden">
+  <footer
+    class="relative bg-gradient-to-br from-[var(--color-dark-blue)] to-[var(--color-green-base)] text-white overflow-hidden"
+  >
     <!-- Animated background elements -->
     <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20">
       <div
@@ -21,12 +23,12 @@
         <div class="group">
           <div class="flex items-center space-x-2 mb-6">
             <div
-              class="w-10 h-10 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition duration-500"
+              class="w-10 h-10 bg-gradient-to-r from-[var(--color-orange-base)] to-[var(--color-yellow-base)] rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition duration-500"
             >
               <span class="text-xl font-bold">MD</span>
             </div>
             <h2
-              class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500"
+              class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-orange-base)] to-[var(--color-yellow-base)]"
             >
               Manuel Dala
             </h2>
@@ -198,18 +200,15 @@
               <input
                 type="email"
                 placeholder="Your email"
-                class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 text-white"
+                class="w-full bg-[var(--color-beige-base)]/70 focus:bg-[var(--color-beige-base)] border border-[var(--color-orange-base)] rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 text-black"
               />
-              <button
-                type="submit"
-                class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-4 py-1 transition"
-              >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button class="button absolute right-2 top-1/2 transform -translate-y-1/2">
+                Send
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                    clip-rule="evenodd"
                   ></path>
                 </svg>
               </button>
@@ -245,3 +244,75 @@ defineOptions({
   name: 'LayoutFooter',
 })
 </script>
+
+<style scoped>
+/* From Uiverse.io by satyamchaudharydev */
+.button {
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  padding-block: 0.1rem;
+  padding-inline: 0.75rem;
+  background-color: #ff6d1f;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffff;
+  font-weight: bold;
+  border: 3px solid #ffffff4d;
+  outline: none;
+  overflow: hidden;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.icon {
+  margin-left: 5px;
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  border-color: #fff9;
+}
+
+.button:hover .icon {
+  transform: translate(4px);
+}
+
+.button:hover::before {
+  animation: shine 1.5s ease-out infinite;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0) 70%
+  );
+  top: 0;
+  left: -100px;
+  opacity: 0.6;
+}
+
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+
+  60% {
+    left: 100%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+</style>

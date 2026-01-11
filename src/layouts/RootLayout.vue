@@ -2,7 +2,11 @@
   <div class="min-h-screen">
     <layout-header />
 
-    <div class="min-h-[80vh] py-6 px-12"><slot /></div>
+    <div
+      class="min-h-[80vh] py-6 px-12 bg-gradient-to-b from-[var(--color-white)] to-[var(--color-beige-base)]"
+    >
+      <slot />
+    </div>
 
     <layout-footer />
   </div>

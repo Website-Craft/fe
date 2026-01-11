@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+@import 'primeicons/primeicons.css';
+
+@theme {
+    --color-white: #ffffff;
+    --color-black: #222222;
+  
+    --color-orange-base: #FF6D1F;
+    --color-gold-base: #F5E7C6;
+    --color-beige-base: #FAF3E1;
+    --color-green-base: #344F1F;
+    --color-coban-base: #758A93;
+    --color-grey-base: #ECD5BC;
+    --color-yellow-base: #E9B63B;
+    --color-brown-base: #C66E52;
+    --color-dark-blue: #001F3D;
+}

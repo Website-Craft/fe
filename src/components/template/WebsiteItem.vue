@@ -1,7 +1,7 @@
 <template>
   <div
     ref="containerRef"
-    class="relative w-full h-[320px] overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-900"
+    class="relative w-full h-[350px] overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-900"
     @mouseenter="startScroll"
     @mouseleave="resetScroll"
   >
