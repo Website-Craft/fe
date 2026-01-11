@@ -1,15 +1,19 @@
 <template>
-<carousel />
-<div class="my-8 mx-48">
-  <website-list />
-</div>
-
+  <carousel />
+  <website-introduction />
+  <div class="my-8 2xl:mx-36">
+    <website-list />
+  </div>
+  <technology-showcase />
 </template>
+
 <script setup lang="ts">
 import Carousel from '@/components/carousel/Carousel.vue';
 import WebsiteList from '@/components/template/WebsiteList.vue';
+import WebsiteIntroduction from '@/components/template/WebsiteIntroduction.vue';
+import TechnologyShowcase from '@/components/template/TechnologyShowcase.vue';
 
-  defineOptions({
+defineOptions({
   name: 'HomePage',
 })
 </script>
