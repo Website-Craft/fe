@@ -3,7 +3,7 @@
     <layout-header />
 
     <div
-      class="min-h-[80vh] py-6 px-12 bg-gradient-to-b from-[var(--color-white)] to-[var(--color-beige-base)]"
+      class="min-h-[80vh] py-6 px-4 md:px-12 bg-gradient-to-b from-[var(--color-white)] to-[var(--color-beige-base)]"
     >
       <slot />
     </div>
