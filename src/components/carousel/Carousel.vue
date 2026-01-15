@@ -7,15 +7,21 @@
         :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
       >
         <div
-          v-for="(image, index) in images"
+          v-for="(item, index) in images"
           :key="index"
           class="min-w-full h-full relative overflow-hidden"
         >
           <img
-            :src="image"
+            :src="item.image"
             class="w-full h-full object-cover transition-transform duration-1000 ease-out"
             :class="{ 'scale-110': isTransitioning && index === currentIndex }"
           />
+
+          <!-- Text Content -->
+          <div class="absolute inset-0 flex flex-col justify-start p-8 text-white mt-10">
+            <h2 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">{{ item.title }}</h2>
+            <p class="text-xl md:text-2xl drop-shadow-lg">{{ item.content }}</p>
+          </div>
         </div>
       </div>
 
@@ -50,13 +56,13 @@
         :style="{ transform: `translateX(${thumbTranslateX}px)` }"
       >
         <div
-          v-for="(image, index) in images"
+          v-for="(item, index) in images"
           :key="index"
           @click="goTo(index)"
           class="shrink-0 cursor-pointer transition-all duration-500"
           :class="index === currentIndex ? activeThumb : inactiveThumb"
         >
-          <img :src="image" class="w-full h-full object-cover rounded-xl shadow-lg" />
+          <img :src="item.image" class="w-full h-full object-cover rounded-xl shadow-lg" />
         </div>
       </div>
     </div>

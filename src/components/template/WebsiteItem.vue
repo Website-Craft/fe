@@ -1,26 +1,26 @@
 <template>
   <div
     ref="containerRef"
-    class="relative w-full h-[350px] overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-900"
+    class="relative w-full h-[350px] flex flex-col overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-900"
     @mouseenter="startScroll"
     @mouseleave="resetScroll"
   >
-    <img
-      ref="imageRef"
-      :src="src"
-      :alt="title"
-      class="w-full block"
-      :style="imageStyle"
-      @load="calculateScroll"
-    />
+    <!-- Image Section -->
+    <div ref="imageWrapperRef" class="relative h-[250px] overflow-hidden">
+      <img
+        ref="imageRef"
+        :src="src"
+        :alt="title"
+        class="w-full block"
+        :style="imageStyle"
+        @load="calculateScroll"
+      />
+    </div>
 
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10 pointer-events-none"
-    />
-
-    <div class="absolute bottom-3 left-3 text-white">
-      <p class="text-sm opacity-80">Template</p>
-      <h3 class="font-semibold">{{ title }}</h3>
+    <!-- Content Section -->
+    <div class="flex-grow p-4 bg-white text-gray-700 flex flex-col justify-center border-t border-gray-200">
+      <p class="text-xs text-gray-500 mb-1">Template</p>
+      <h3 class="text-lg font-bold truncate">{{ title }}</h3>
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ import { ref, computed } from 'vue'
 
 defineProps<{ src: string; title?: string }>()
 
-const containerRef = ref<HTMLElement | null>(null)
+const imageWrapperRef = ref<HTMLElement | null>(null)
 const imageRef = ref<HTMLImageElement | null>(null)
 
 const offset = ref(0)
@@ -49,8 +49,8 @@ const scrollDuration = computed(() => {
 })
 
 const calculateScroll = () => {
-  if (!containerRef.value || !imageRef.value) return
-  maxScroll.value = Math.max(0, imageRef.value.clientHeight - containerRef.value.clientHeight)
+  if (!imageWrapperRef.value || !imageRef.value) return
+  maxScroll.value = Math.max(0, imageRef.value.clientHeight - imageWrapperRef.value.clientHeight)
 }
 
 const startScroll = () => {
