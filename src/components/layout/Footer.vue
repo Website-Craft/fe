@@ -155,9 +155,9 @@
               <div class="ml-3">
                 <p class="text-sm text-gray-300">Email</p>
                 <a
-                  href="mailto:manueljosedala@hotmail.com"
+                  href="mailto:tuandtdeveloper@gmail.com"
                   class="text-white hover:text-blue-400 transition"
-                  >manueljosedala@hotmail.com</a
+                  >tuandtdeveloper@gmail.com</a
                 >
               </div>
             </li>
@@ -183,8 +183,8 @@
               </div>
               <div class="ml-3">
                 <p class="text-sm text-gray-300">Phone</p>
-                <a href="tel:+244941540352" class="text-white hover:text-blue-400 transition"
-                  >+244 941 540 352</a
+                <a href="tel:+84828.477.808" class="text-white hover:text-blue-400 transition"
+                  >+84828.477.808</a
                 >
               </div>
             </li>
