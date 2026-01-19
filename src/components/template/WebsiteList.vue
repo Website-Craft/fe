@@ -1,5 +1,4 @@
 <template>
-  <h3></h3>
   <div class="w-full grid grid-cols-1 md:grid-cols-4 2xl:grid-cols-5 gap-3 2xl:gap-6 space-y-6">
     <website-item v-for="item in templates" :key="item.id" :src="item.image" :title="item.name" />
     <!-- From Uiverse.io by jawad_8494 -->
