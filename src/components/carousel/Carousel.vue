@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full md:max-w-[85%] mx-auto overflow-hidden rounded-2xl shadow-2xl bg-black/50">
+  <div class="relative w-full md:max-w-[85%] mx-auto overflow-hidden rounded-md shadow-2xl bg-black/50">
     <!-- ================= MAIN SLIDER ================= -->
     <div class="relative aspect-[16/9] overflow-hidden">
       <div
@@ -18,7 +18,7 @@
           />
 
           <!-- Text Content -->
-          <div class="absolute inset-0 flex flex-col justify-start p-8 text-white mt-10">
+          <div class="hidden md:flex md:absolute inset-0 flex flex-col justify-start p-8 text-white mt-10">
             <h2 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">{{ item.title }}</h2>
             <p class="text-xl md:text-2xl drop-shadow-lg">{{ item.content }}</p>
           </div>

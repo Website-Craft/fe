@@ -1,9 +1,10 @@
 <template>
+  <h3></h3>
   <div class="w-full grid grid-cols-1 md:grid-cols-4 2xl:grid-cols-5 gap-3 2xl:gap-6 space-y-6">
     <website-item v-for="item in templates" :key="item.id" :src="item.image" :title="item.name" />
     <!-- From Uiverse.io by jawad_8494 -->
   </div>
-  <div class="w-full flex justify-center">
+  <div class="w-full flex justify-center mt-6 md:mt-0">
       <button class="super-button">
       <span>Xem tất cả</span>
       <svg fill="none" viewBox="0 0 24 24" class="arrow">
