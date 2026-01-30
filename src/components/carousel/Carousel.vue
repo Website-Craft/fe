@@ -18,9 +18,9 @@
           />
 
           <!-- Text Content -->
-          <div class="hidden md:flex md:absolute inset-0 flex flex-col justify-start p-8 text-white mt-10">
-            <h2 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">{{ item.title }}</h2>
-            <p class="text-xl md:text-2xl drop-shadow-lg">{{ item.content }}</p>
+          <div class="hidden md:flex md:absolute inset-0 flex flex-col justify-start p-2 2xl:p-8 text-white 2xl:mt-10">
+            <h2 class="text-4xl 2xl:text-6xl font-extrabold mb-4 drop-shadow-lg">{{ item.title }}</h2>
+            <p class="text-xl 2xl:text-2xl drop-shadow-lg">{{ item.content }}</p>
           </div>
         </div>
       </div>
