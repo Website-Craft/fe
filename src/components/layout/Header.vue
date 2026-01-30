@@ -50,6 +50,11 @@ const items = ref([
     route: '/about',
   },
   {
+    label: 'Products',
+    icon: 'pi pi-th-large',
+    route: '/products',
+  },
+  {
     label: 'Projects',
     icon: 'pi pi-search',
     items: [
