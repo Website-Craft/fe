@@ -169,7 +169,7 @@ const menuItems = [
   },
   {
     label: 'HEADER.PRODUCTS',
-    icon: 'pi pi-search',
+    icon: 'pi pi-th-large',
     items: [
       {
         label: 'HEADER.components',

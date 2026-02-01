@@ -15,6 +15,16 @@ const router = createRouter({
       name: 'AboutPage',
       component: () => import('@/views/about/AboutPage.vue'),
     },
+    {
+      path: '/error',
+      name: 'NotFound',
+      component: () => import('@/views/error/ErrorPage.vue'),
+      meta: { title: '404 - Not Found' },
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/',
+    },
   ],
 })
 
