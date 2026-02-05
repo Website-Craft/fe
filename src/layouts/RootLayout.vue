@@ -1,6 +1,8 @@
 <template>
   <div class="min-h-screen">
-    <layout-header class="fixed top-0 left-0 right-0 z-50" />
+    <div class="fixed top-0 left-0 right-0 z-50" >
+      <layout-header />
+    </div>
     <div
       class="min-h-[80vh] py-3 px-4 md:px-12 bg-gradient-to-b from-[var(--color-white)] to-[var(--color-beige-base)] pt-[var(--header-height)]"
     >
