@@ -6,16 +6,14 @@
       <h2
         class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-[var(--color-orange-base)]"
       >
-        Chào mừng đến với bộ sưu tập các dự án web của chúng tôi
+        {{ $t('HOME.WELCOME_TITLE') }}
       </h2>
       <p class="mt-6 text-xl text-color-black max-w-3xl mx-auto">
-        Chúng tôi tự hào giới thiệu những dự án web đã hoàn thành, thể hiện sự sáng tạo, đổi mới và
-        chuyên nghiệp trong từng chi tiết. Khám phá các trang web được thiết kế để mang lại trải
-        nghiệm người dùng tuyệt vời và hiệu quả kinh doanh tối ưu.
+        {{ $t('HOME.CONTENT') }}
       </p>
       <div class="mt-10 min-h-[70px]">
         <button>
-          Xem dự án
+          {{ $t('COMMON.VIEW_PROJECTS') }}
           <div id="clip">
             <div id="leftTop" class="corner"></div>
             <div id="rightBottom" class="corner"></div>

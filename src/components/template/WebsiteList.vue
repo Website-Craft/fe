@@ -5,7 +5,7 @@
   </div>
   <div class="w-full flex justify-center mt-6 md:mt-0">
       <button class="super-button">
-      <span>Xem tất cả</span>
+      <span>{{ $t('COMMON.VIEW_ALL') }}</span>
       <svg fill="none" viewBox="0 0 24 24" class="arrow">
         <path
           stroke-linejoin="round"

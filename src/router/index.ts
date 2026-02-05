@@ -16,6 +16,11 @@ const router = createRouter({
       component: () => import('@/views/about/AboutPage.vue'),
     },
     {
+      path: '/legal',
+      name: 'LegalPage',
+      component: () => import('@/views/legal/LegalPage.vue'),
+    },
+    {
       path: '/error',
       name: 'NotFound',
       component: () => import('@/views/error/ErrorPage.vue'),

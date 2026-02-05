@@ -5,7 +5,7 @@
         class="button-container bg-gradient-to-r from-[var(--color-orange-base)] to-[var(--color-yellow-base)] hover:bg-gradient-to-r hover:from-[var(--color-yellow-base)] hover:to-[var(--color-orange-base)]"
       >
         <div class="b-m-container">
-          <div class="b-m-text">DỊCH VỤ THIẾT KẾ WEB TẠI Tempate Websites</div>
+          <div class="b-m-text">{{ $t('HOME.TITLE', { name: WebName.WEB_NAME }) }}</div>
           <div class="b-m-icon">
             <svg viewBox="0 0 24 24" height="100%" width="100%">
               <path
@@ -17,8 +17,8 @@
       </button>
     </div>
     <h1 class="flex flex-col text-center my-3 md:my-6 text-2xl md:text-5xl font-extrabold text-[var(--color-white)]">
-      <div>Hơn <span class="text-[var(--color-orange-base)]">1000+</span> mẫu website</div>
-      <div>chuyên nghiệp <span class="text-[var(--color-blue-base)]">Đa lĩnh vực</span></div>
+      <div>{{ $t('HOME.MORE') }} <span class="text-[var(--color-orange-base)]">1000+</span> {{ $t('HOME.TEMPLATE_WEBSITE') }}</div>
+      <div>{{ $t('HOME.PROFESSIONAL') }} <span class="text-[var(--color-blue-base)]">{{ $t('HOME.MULTIPLE_DOMAINS') }}</span></div>
     </h1>
 
     <div class="flex justify-center items-center">
@@ -55,6 +55,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import { WebName } from '@/constants';
+
 defineOptions({
   name: 'InformationComponent',
 })
