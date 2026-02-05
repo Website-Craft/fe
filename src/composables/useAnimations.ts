@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export function initLegalPageAnimations() {
+export function initLegalPageAnimations(): void {
   // Hero
   gsap.from('.hero .title', {
     y: 80,
@@ -22,7 +22,9 @@ export function initLegalPageAnimations() {
   })
 
   // Sections
-  gsap.utils.toArray('.legal-section').forEach((section: any, i: number) => {
+  const sections = gsap.utils.toArray<HTMLElement>('.legal-section')
+
+  sections.forEach((section, i) => {
     gsap.from(section, {
       scrollTrigger: {
         trigger: section,
@@ -36,17 +38,25 @@ export function initLegalPageAnimations() {
       delay: i * 0.15,
     })
 
-    // Title underline
-    gsap.from(section.querySelector('.section-title::after'), {
-      scrollTrigger: section,
-      width: 0,
-      duration: 1.2,
-      ease: 'power2.out',
-    })
+    // Title underline (pseudo-element ::after)
+    const underline = section.querySelector<HTMLElement>('.section-title::after')
+    if (underline) {
+      gsap.from(underline, {
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 85%',
+        },
+        width: 0,
+        duration: 1.2,
+        ease: 'power2.out',
+      })
+    }
   })
 
   // List items stagger
-  gsap.utils.toArray('.content-block ul li').forEach((li: any) => {
+  const listItems = gsap.utils.toArray<HTMLElement>('.content-block ul li')
+
+  listItems.forEach((li) => {
     gsap.from(li, {
       scrollTrigger: {
         trigger: li,

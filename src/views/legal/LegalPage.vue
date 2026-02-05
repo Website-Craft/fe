@@ -7,7 +7,7 @@
       <LegalSection title="1. Giới thiệu">
         <LegalContentBlock>
           <p>
-            Chào mừng bạn đến với <strong>[Tên Website]</strong> – nền tảng cung cấp các mẫu website chuyên nghiệp
+            Chào mừng bạn đến với <strong>{{ WebName.WEB_NAME }}</strong> – nền tảng cung cấp các mẫu website chuyên nghiệp
             sẵn có và dịch vụ thiết kế website theo yêu cầu.
           </p>
           <p>
@@ -92,6 +92,7 @@ import LegalContentBlock from '@/components/legal/LegalContentBlock.vue'
 import LegalFooterNote from '@/components/legal/LegalFooterNote.vue'
 import { initLegalPageAnimations } from '@/composables/useAnimations'
 import { onMounted } from 'vue'
+import { WebName } from '@/constants'
 
 onMounted(() => {
   initLegalPageAnimations()
