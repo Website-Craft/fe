@@ -1,419 +1,607 @@
 <template>
-  <div class="p-4 xl:p-8 bg-black/30 rounded-2xl">
-    <div class="w-full flex justify-center">
-      <button
-        class="button-container bg-gradient-to-r from-[var(--color-orange-base)] to-[var(--color-yellow-base)] hover:bg-gradient-to-r hover:from-[var(--color-yellow-base)] hover:to-[var(--color-orange-base)]"
-      >
-        <div class="b-m-container">
-          <div class="b-m-text">{{ $t('HOME.TITLE', { name: WebName.WEB_NAME }) }}</div>
-          <div class="b-m-icon">
-            <svg viewBox="0 0 24 24" height="100%" width="100%">
-              <path
-                d="M5.536 21.886a1.004 1.004 0 0 0 1.033-.064l13-9a1 1 0 0 0 0-1.644l-13-9A.998.998 0 0 0 5 3v18a1 1 0 0 0 .536.886zM7 4.909 17.243 12 19.091V4.909z"
-              ></path>
-            </svg>
-          </div>
-        </div>
-      </button>
+  <div class="info-card">
+    <!-- ===== GLASSMORPHISM FRAME ===== -->
+    <div class="info-glass-frame" aria-hidden="true">
+      <span class="frame-corner frame-corner--tl"></span>
+      <span class="frame-corner frame-corner--tr"></span>
+      <span class="frame-corner frame-corner--bl"></span>
+      <span class="frame-corner frame-corner--br"></span>
     </div>
-    <h1 class="flex flex-col text-center my-3 md:my-6 text-2xl md:text-5xl font-extrabold text-[var(--color-white)]">
-      <div>{{ $t('HOME.MORE') }} <span class="text-[var(--color-orange-base)]">1000+</span> {{ $t('HOME.TEMPLATE_WEBSITE') }}</div>
-      <div>{{ $t('HOME.PROFESSIONAL') }} <span class="text-[var(--color-blue-base)]">{{ $t('HOME.MULTIPLE_DOMAINS') }}</span></div>
+
+    <!-- ===== FLOATING PARTICLES ===== -->
+    <div class="info-particles" aria-hidden="true">
+      <span v-for="n in 8" :key="n" class="info-particle" :style="particleStyle(n)"></span>
+    </div>
+
+    <!-- ===== SERVICE BADGE ===== -->
+    <div class="info-top">
+      <div class="service-badge">
+        <span class="badge-pulse"></span>
+        <svg
+          class="badge-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        <span class="badge-text">{{ $t('HOME.TITLE', { name: WebName.WEB_NAME }) }}</span>
+        <svg
+          class="badge-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- ===== HEADLINE ===== -->
+    <h1 class="info-headline">
+      <span class="headline-line headline-line--1">
+        {{ $t('HOME.MORE') }}
+        <span class="headline-number">
+          <span class="number-text">1000+</span>
+          <span class="number-glow" aria-hidden="true">1000+</span>
+        </span>
+        {{ $t('HOME.TEMPLATE_WEBSITE') }}
+      </span>
+      <span class="headline-line headline-line--2">
+        {{ $t('HOME.PROFESSIONAL') }}
+        <span class="headline-domains">{{ $t('HOME.MULTIPLE_DOMAINS') }}</span>
+      </span>
     </h1>
 
-    <div class="flex justify-center items-center">
-      <!-- From Uiverse.io by marcelodolza -->
-      <button class="button">
-        <div class="outline"></div>
-        <div class="state state--default">
-          <div class="icon"></div>
-          <p>
-            <span style="--i: 0">V</span>
-            <span style="--i: 1">i</span>
-            <span style="--i: 2">e</span>
-            <span style="--i: 3">w</span>
-            <span style="--i: 4">T</span>
-            <span style="--i: 5">e</span>
-            <span style="--i: 6">m</span>
-            <span style="--i: 7">p</span>
-            <span style="--i: 8">l</span>
-            <span style="--i: 9">a</span>
-            <span style="--i: 10">t</span>
-            <span style="--i: 11">e</span>
-          </p>
-        </div>
-        <div class="state state--sent">
-          <p>
-            <span style="--i: 5">V</span>
-            <span style="--i: 6">i</span>
-            <span style="--i: 7">e</span>
-            <span style="--i: 8">w</span>
-          </p>
-        </div>
+    <!-- ===== DIVIDER ===== -->
+    <div class="info-divider" aria-hidden="true">
+      <span class="divider-track">
+        <span class="divider-shine"></span>
+      </span>
+      <span class="divider-gem">◆</span>
+      <span class="divider-track">
+        <span class="divider-shine" style="animation-delay: 0.5s"></span>
+      </span>
+    </div>
+
+    <!-- ===== CTA BUTTON ===== -->
+    <div class="info-cta">
+      <button class="cta-btn" @mouseenter="onBtnHover" @mouseleave="onBtnLeave" ref="ctaBtn">
+        <!-- Shimmer sweep -->
+        <span class="cta-shimmer" aria-hidden="true"></span>
+        <!-- Rotating ring -->
+        <span class="cta-ring" aria-hidden="true"></span>
+        <!-- Content -->
+        <span class="cta-inner">
+          <span class="cta-icon-wrap">
+            <svg class="cta-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+              />
+            </svg>
+          </span>
+          <span class="cta-letters">
+            <span
+              v-for="(char, i) in 'ViewTemplate'.split('')"
+              :key="i"
+              class="cta-char"
+              :style="{ '--ci': i }"
+              >{{ char }}</span
+            >
+          </span>
+        </span>
       </button>
+
+      <!-- Secondary pill -->
+      <div class="info-stats-pill">
+        <span class="stats-dot"></span>
+        <span class="stats-txt">Cập nhật liên tục mỗi tuần</span>
+      </div>
     </div>
   </div>
 </template>
-<script setup lang="ts">
-import { WebName } from '@/constants';
 
-defineOptions({
-  name: 'InformationComponent',
-})
+<script setup lang="ts">
+import { ref } from 'vue'
+import { WebName } from '@/constants'
+
+defineOptions({ name: 'InformationComponent' })
+
+const ctaBtn = ref<HTMLElement | null>(null)
+
+function onBtnHover(e: MouseEvent) {
+  const btn = e.currentTarget as HTMLElement
+  btn.style.transform = 'translateY(-3px) scale(1.03)'
+}
+function onBtnLeave(e: MouseEvent) {
+  const btn = e.currentTarget as HTMLElement
+  btn.style.transform = ''
+}
+
+function particleStyle(n: number) {
+  const size = (Math.random() * 4 + 2).toFixed(1)
+  const left = (n * 12 + Math.random() * 6 - 3).toFixed(1)
+  const top = (Math.random() * 80 + 5).toFixed(1)
+  const delay = (Math.random() * 3).toFixed(2)
+  const dur = (2.5 + Math.random() * 3).toFixed(2)
+  return {
+    width: `${size}px`,
+    height: `${size}px`,
+    left: `${left}%`,
+    top: `${top}%`,
+    '--p-delay': `${delay}s`,
+    '--p-dur': `${dur}s`,
+  }
+}
 </script>
 
 <style scoped>
-/* From Uiverse.io by Amanfrom2005 */
-.button-container {
-  cursor: pointer;
-  border: none;
-  padding: 13px 30px 13px;
-  clip-path: polygon(
-    0% 0%,
-    64% 0%,
-    64% 10%,
-    70% 10%,
-    75% 1%,
-    100% 0%,
-    100% 80%,
-    95% 100%,
-    42% 100%,
-    42% 90%,
-    34% 90%,
-    34% 100%,
-    5% 100%,
-    0% 80%
-  );
-  transition: all 0.3s ease-in-out;
-}
-.b-m-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  -webkit-mask-image: linear-gradient(-75deg, rgb(0 0 0) 30%, #000 50%, rgba(0, 0, 0, 0.2) 70%);
-  -webkit-mask-size: 200%;
-  animation: shine 2s infinite;
-  transition: 0.35s;
-}
-@keyframes shine {
-  0% {
-    -webkit-mask-position: 160%;
-  }
-  100% {
-    -webkit-mask-position: -50%;
-  }
-}
-.b-m-text {
-  text-transform: uppercase;
-  font-size: 20px;
-  color: #fff;
-  font-weight: 100;
-  margin-right: 10px;
-  font-family: 'Franklin Gothic Medium', sans-serif;
-}
-
-.b-m-icon {
-  width: 14px;
-  height: 14px;
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.b-m-icon svg {
-  fill: #fff;
-}
-
-/* From Uiverse.io by marcelodolza */
-.button {
-  --primary: #ff5569;
-  --neutral-1: #f7f8f7;
-  --neutral-2: #e7e7e7;
-  --radius: 14px;
-
-  cursor: pointer;
-  border-radius: var(--radius);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  border: none;
-  box-shadow:
-    0 0.5px 0.5px 1px rgba(255, 255, 255, 0.2),
-    0 10px 20px rgba(0, 0, 0, 0.2),
-    0 4px 5px 0px rgba(0, 0, 0, 0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ========================
+   CARD WRAPPER
+======================== */
+.info-card {
   position: relative;
-  transition: all 0.3s ease;
-  min-width: 200px;
-  padding: 20px;
-  height: 68px;
-  font-family: 'Galano Grotesque', Poppins, Montserrat, sans-serif;
-  font-style: normal;
-  font-size: 18px;
-  font-weight: 600;
-}
-.button:hover {
-  transform: scale(1.02);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 32px 24px;
+  border-radius: 24px;
+  overflow: hidden;
+
+  /* Glassmorphism background */
+  background: linear-gradient(
+    135deg,
+    rgba(26, 15, 0, 0.75) 0%,
+    rgba(42, 22, 8, 0.7) 50%,
+    rgba(26, 15, 0, 0.78) 100%
+  );
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(200, 146, 42, 0.22);
   box-shadow:
-    0 0 1px 2px rgba(255, 255, 255, 0.3),
-    0 15px 30px rgba(0, 0, 0, 0.3),
-    0 10px 3px -3px rgba(0, 0, 0, 0.04);
-}
-.button:active {
-  transform: scale(1);
-  box-shadow:
-    0 0 1px 2px rgba(255, 255, 255, 0.3),
-    0 10px 3px -3px rgba(0, 0, 0, 0.2);
-}
-.button:after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius);
-  border: 2.5px solid transparent;
-  background:
-    linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.45)) border-box;
-  z-index: 0;
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(200, 146, 42, 0.08),
+    inset 0 1px 0 rgba(255, 240, 192, 0.08);
   transition: all 0.4s ease;
 }
-.button:hover::after {
-  transform: scale(1.05, 1.1);
-  box-shadow: inset 0 -1px 3px 0 rgba(255, 255, 255, 1);
-}
-.button::before {
-  content: '';
-  inset: 7px 6px 6px 6px;
-  position: absolute;
-  background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
-  border-radius: 30px;
-  filter: blur(0.5px);
-  z-index: 2;
-}
-.state p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.state .icon {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  transform: scale(1.25);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.info-card:hover {
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1.5px rgba(200, 146, 42, 0.3),
+    inset 0 1px 0 rgba(255, 240, 192, 0.12);
+  border-color: rgba(200, 146, 42, 0.35);
 }
 
-/* Outline */
-.outline {
+/* ========================
+   GLASS FRAME CORNERS
+======================== */
+.info-glass-frame {
   position: absolute;
-  border-radius: inherit;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.frame-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(200, 146, 42, 0.5);
+  border-style: solid;
+  transition: opacity 0.3s;
+}
+.frame-corner--tl {
+  top: 8px;
+  left: 8px;
+  border-width: 2px 0 0 2px;
+  border-radius: 4px 0 0 0;
+}
+.frame-corner--tr {
+  top: 8px;
+  right: 8px;
+  border-width: 2px 2px 0 0;
+  border-radius: 0 4px 0 0;
+}
+.frame-corner--bl {
+  bottom: 8px;
+  left: 8px;
+  border-width: 0 0 2px 2px;
+  border-radius: 0 0 0 4px;
+}
+.frame-corner--br {
+  bottom: 8px;
+  right: 8px;
+  border-width: 0 2px 2px 0;
+  border-radius: 0 0 4px 0;
+}
+.info-card:hover .frame-corner {
+  border-color: rgba(212, 168, 73, 0.8);
+}
+
+/* ========================
+   PARTICLES
+======================== */
+.info-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   overflow: hidden;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  inset: -2px -3.5px;
+  z-index: 0;
 }
-.outline::before {
-  content: '';
+.info-particle {
   position: absolute;
-  inset: -100%;
-  background: conic-gradient(from 180deg, transparent 60%, white 80%, transparent 100%);
-  animation: spin 2s linear infinite;
-  animation-play-state: paused;
+  border-radius: 50%;
+  background: rgba(212, 168, 73, 0.6);
+  animation: ip-float var(--p-dur, 3s) ease-in-out var(--p-delay, 0s) infinite alternate;
 }
-@keyframes spin {
+@keyframes ip-float {
+  from {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  to {
+    opacity: 0.5;
+    transform: translateY(-12px) scale(1.2);
+  }
+}
+
+/* ========================
+   ALL CONTENT z-index
+======================== */
+.info-top,
+.info-headline,
+.info-divider,
+.info-cta {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================
+   SERVICE BADGE
+======================== */
+.service-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px 7px 10px;
+  background: linear-gradient(135deg, rgba(200, 146, 42, 0.18) 0%, rgba(184, 92, 56, 0.12) 100%);
+  border: 1px solid rgba(200, 146, 42, 0.35);
+  border-radius: 100px;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.service-badge:hover {
+  background: linear-gradient(135deg, rgba(200, 146, 42, 0.28), rgba(184, 92, 56, 0.2));
+  border-color: rgba(200, 146, 42, 0.6);
+  transform: translateY(-1px);
+}
+.badge-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d4a849;
+  flex-shrink: 0;
+  animation: badge-blink 1.8s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(212, 168, 73, 0.7);
+}
+@keyframes badge-blink {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 4px rgba(212, 168, 73, 0.5);
+  }
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 10px rgba(212, 168, 73, 0.8);
+  }
+}
+.badge-icon {
+  width: 14px;
+  height: 14px;
+  color: #e8c675;
+  flex-shrink: 0;
+}
+.badge-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #e8c675;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.badge-arrow {
+  width: 14px;
+  height: 14px;
+  color: rgba(232, 198, 117, 0.6);
+  transition: transform 0.3s;
+}
+.service-badge:hover .badge-arrow {
+  transform: translateX(3px);
+}
+
+/* ========================
+   HEADLINE
+======================== */
+.info-headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  font-family: 'Playfair Display', serif;
+}
+.headline-line {
+  display: block;
+  color: #fdf6e9;
+  line-height: 1.2;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+.headline-line--1 {
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+}
+.headline-line--2 {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 500;
+  color: rgba(245, 234, 208, 0.75);
+}
+
+/* Number highlight */
+.headline-number {
+  position: relative;
+  display: inline-block;
+}
+.number-text {
+  background: linear-gradient(135deg, #c8922a 0%, #e8c675 50%, #d4a849 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+}
+.number-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #c8922a, #e8c675);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(8px);
+  opacity: 0.45;
+  animation: num-glow 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes num-glow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Domains text */
+.headline-domains {
+  background: linear-gradient(135deg, #6b8f5e, #9bc48d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* ========================
+   DIVIDER
+======================== */
+.info-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 80%;
+}
+.divider-track {
+  flex: 1;
+  height: 1px;
+  background: rgba(200, 146, 42, 0.2);
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+.divider-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 73, 0.8), transparent);
+  animation: shine-sweep 2.5s ease-in-out infinite;
+}
+@keyframes shine-sweep {
   0% {
-    transform: rotate(0deg);
+    transform: translateX(-100%);
   }
   100% {
+    transform: translateX(100%);
+  }
+}
+.divider-gem {
+  font-size: 10px;
+  color: #d4a849;
+  filter: drop-shadow(0 0 4px rgba(212, 168, 73, 0.7));
+  animation: gem-spin 4s linear infinite;
+  display: inline-block;
+}
+@keyframes gem-spin {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.3);
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* ========================
+   CTA BUTTON
+======================== */
+.info-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cta-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 32px;
+  border: none;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #c8922a 0%, #d4a849 40%, #b85c38 100%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 8px 28px rgba(200, 146, 42, 0.45),
+    0 0 0 1px rgba(255, 240, 192, 0.1) inset;
+  letter-spacing: 0.3px;
+}
+.cta-btn:hover {
+  box-shadow:
+    0 14px 40px rgba(200, 146, 42, 0.6),
+    0 0 30px rgba(200, 146, 42, 0.25);
+}
+
+/* Shimmer sweep */
+.cta-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: btn-shimmer 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes btn-shimmer {
+  0% {
+    left: -80%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+/* Rotating ring */
+.cta-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 100px;
+  border: 1.5px dashed rgba(255, 240, 192, 0.25);
+  animation: ring-rotate 5s linear infinite;
+  pointer-events: none;
+}
+@keyframes ring-rotate {
+  to {
     transform: rotate(360deg);
   }
 }
-.button:hover .outline {
-  opacity: 1;
-}
-.button:hover .outline::before {
-  animation-play-state: running;
-}
 
-/* Letters */
-.state p span {
-  display: block;
-  opacity: 0;
-  animation: slideDown 0.8s ease forwards calc(var(--i) * 0.03s);
-}
-.button:hover p span {
-  opacity: 1;
-  animation: wave 0.5s ease forwards calc(var(--i) * 0.02s);
-}
-.button:focus p span {
-  opacity: 1;
-  animation: disapear 0.6s ease forwards calc(var(--i) * 0.03s);
-}
-@keyframes wave {
-  30% {
-    opacity: 1;
-    transform: translateY(4px) translateX(0) rotate(0);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(-3px) translateX(0) rotate(0);
-    color: var(--primary);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) translateX(0) rotate(0);
-  }
-}
-@keyframes slideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px) translateX(5px) rotate(-90deg);
-    color: var(--primary);
-    filter: blur(5px);
-  }
-  30% {
-    opacity: 1;
-    transform: translateY(4px) translateX(0) rotate(0);
-    filter: blur(0);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(-3px) translateX(0) rotate(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) translateX(0) rotate(0);
-  }
-}
-@keyframes disapear {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    transform: translateX(5px) translateY(20px);
-    color: var(--primary);
-    filter: blur(5px);
-  }
-}
-.button:hover .state--default .icon {
-  transform: rotate(45deg) scale(1.25);
-}
-.button:focus .state--default svg {
-  animation: takeOff 0.8s linear forwards;
-}
-.button:focus .state--default .icon {
-  transform: rotate(0) scale(1.25);
-}
-@keyframes takeOff {
-  0% {
-    opacity: 1;
-  }
-  60% {
-    opacity: 1;
-    transform: translateX(70px) rotate(45deg) scale(2);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(160px) rotate(45deg) scale(0);
-  }
-}
-@keyframes land {
-  0% {
-    transform: translateX(-60px) translateY(30px) rotate(-50deg) scale(2);
-    opacity: 0;
-    filter: blur(3px);
-  }
-  100% {
-    transform: translateX(0) translateY(0) rotate(0);
-    opacity: 1;
-    filter: blur(0);
-  }
-}
-
-/* Contrail */
-.state--default .icon:before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  height: 2px;
-  width: 0;
-  left: -5px;
-  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.5));
-}
-.button:focus .state--default .icon:before {
-  animation: contrail 0.8s linear forwards;
-}
-@keyframes contrail {
-  0% {
-    width: 0;
-    opacity: 1;
-  }
-  8% {
-    width: 15px;
-  }
-  60% {
-    opacity: 0.7;
-    width: 80px;
-  }
-  100% {
-    opacity: 0;
-    width: 160px;
-  }
-}
-
-/* States */
-.state {
-  z-index: 2;
-  display: flex;
+/* Inner content */
+.cta-inner {
   position: relative;
-}
-.state--default span:nth-child(4) {
-  margin-right: 5px;
-}
-.state--sent {
-  display: none;
-}
-.button:focus .state--default {
-  position: absolute;
-}
-.button:focus .state--sent {
+  z-index: 1;
   display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.button:focus .state--sent span {
+.cta-icon-wrap {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cta-icon {
+  width: 13px;
+  height: 13px;
+}
+
+/* Wave char animation */
+.cta-letters {
+  display: flex;
+  gap: 0;
+}
+.cta-char {
+  display: inline-block;
+  animation: char-in 0.6s ease forwards calc(var(--ci) * 0.04s);
   opacity: 0;
-  animation: slideDown 0.8s ease forwards calc(var(--i) * 0.2s);
+  transform: translateY(6px);
 }
-.button:focus .state--sent .icon svg {
-  opacity: 0;
-  animation: appear 1.2s ease forwards 0.8s;
+@keyframes char-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-@keyframes appear {
+.cta-btn:hover .cta-char {
+  animation: char-wave 0.4s ease forwards calc(var(--ci) * 0.03s);
+}
+@keyframes char-wave {
   0% {
-    opacity: 0;
-    transform: scale(4) rotate(-40deg);
-    color: var(--primary);
-    filter: blur(4px);
+    transform: translateY(0);
   }
-  30% {
-    opacity: 1;
-    transform: scale(0.6);
-    filter: blur(1px);
+  40% {
+    transform: translateY(-3px);
   }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-    filter: blur(0);
+  60% {
+    transform: translateY(1px);
   }
   100% {
-    opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
+}
+
+/* Stats pill */
+.info-stats-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+}
+.stats-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6b8f5e;
+  animation: stats-blink 2s ease-in-out infinite;
+}
+@keyframes stats-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+.stats-txt {
+  font-size: 11px;
+  color: rgba(245, 234, 208, 0.45);
+  font-weight: 500;
+  white-space: nowrap;
 }
 </style>

@@ -12,9 +12,12 @@
     <button
       v-if="showScrollToTopButton"
       @click="scrollToTop"
-      class="fixed cursor-pointer bottom-8 right-8 bg-gradient-to-r from-[var(--color-orange-base)] to-[var(--color-yellow-base)] text-white p-3 rounded-full shadow-lg hover:from-[var(--color-orange-dark)] transition-all duration-300 z-50"
-    >
-      <i class="pi pi-arrow-up text-xl"></i>
+      class="scroll-top-btn fixed cursor-pointer bottom-8 right-8 bg-gradient-to-r from-[var(--color-orange-base)] to-[var(--color-yellow-base)] text-white p-3 rounded-full shadow-lg hover:from-[var(--color-orange-dark)] transition-all duration-300 z-50"
+      aria-label="Lên đầu trang"
+      >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M18 15l-6-6-6 6" />
+      </svg>
     </button>
 
     <layout-footer />
@@ -51,3 +54,26 @@ defineOptions({
   name: 'RootLayout',
 })
 </script>
+
+<style scoped>
+.scroll-top-btn {
+  width: 48px;
+  height: 48px;
+  border: 3px solid #060913;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 20px rgba(56,189,248,0.4);
+}
+.scroll-top-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(56,189,248,0.6);
+}
+.scroll-top-btn svg { width: 22px; height: 22px; transition: transform 0.3s; }
+.scroll-top-btn:hover svg { transform: translateY(-2px); }
+</style>
