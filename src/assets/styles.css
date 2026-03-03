@@ -1,20 +1,223 @@
 @import 'tailwindcss';
 @import 'primeicons/primeicons.css';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* ===========================
+   🌍 MỆNH THỔ - EARTH PALETTE
+   =========================== */
 @theme {
-    --header-height: 80px;
-    --color-white: #ffffff;
-    --color-black: #222222;
-  
-    --color-orange-base: #FF6D1F;
-    --color-orange-dark: #cc5718;
-    --color-gold-base: #F5E7C6;
-    --color-beige-base: #FAF3E1;
-    --color-green-base: #344F1F;
-    --color-blue-base: #031CF8;
-    --color-coban-base: #758A93;
-    --color-grey-base: #ECD5BC;
-    --color-yellow-base: #E9B63B;
-    --color-brown-base: #C66E52;
-    --color-dark-blue: #001F3D;
+  --header-height: 80px;
+
+  /* === Core Earth Tones === */
+  --color-white: #ffffff;
+  --color-black: #1a0f00;
+
+  /* Amber / Gold */
+  --color-amber-light: #f5d78e;
+  --color-amber-base: #c8922a;
+  --color-amber-dark: #9b6a10;
+  --color-gold-base: #d4a849;
+  --color-gold-light: #e8c675;
+  --color-gold-shine: #fff0c0;
+
+  /* Brown / Earth */
+  --color-earth-cream: #fdf6e9;
+  --color-earth-beige: #f5ead0;
+  --color-earth-sand: #e2c99a;
+  --color-earth-warm: #c4956a;
+  --color-earth-mid: #8b5e3c;
+  --color-earth-deep: #5c3a1e;
+  --color-earth-bark: #3a2210;
+
+  /* Terracotta */
+  --color-terra-light: #d4876a;
+  --color-terra-base: #b85c38;
+  --color-terra-dark: #8c3a1f;
+
+  /* Forest Green (accent) */
+  --color-forest-light: #6b8f5e;
+  --color-forest-base: #3d5a3e;
+  --color-forest-dark: #243528;
+
+  /* Legacy mappings (compatibility) */
+  --color-orange-base: #c8922a;
+  --color-orange-dark: #9b6a10;
+  --color-gold-base: #d4a849;
+  --color-beige-base: #f5ead0;
+  --color-green-base: #3d5a3e;
+  --color-blue-base: #4a6741;
+  --color-coban-base: #8b6d4a;
+  --color-grey-base: #e2c99a;
+  --color-yellow-base: #d4a849;
+  --color-brown-base: #b85c38;
+  --color-dark-blue: #3a2210;
+}
+
+/* ===========================
+   GLOBAL BASE
+   =========================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-earth-cream);
+  color: var(--color-earth-bark);
+}
+
+/* ===========================
+   GLOBAL ANIMATIONS
+   =========================== */
+@keyframes earth-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes earth-glow-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px rgba(200, 146, 42, 0.3),
+      0 0 40px rgba(200, 146, 42, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 35px rgba(200, 146, 42, 0.6),
+      0 0 70px rgba(200, 146, 42, 0.25);
+  }
+}
+
+@keyframes earth-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes earth-rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes earth-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes earth-particle {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) scale(1.5);
+  }
+}
+
+@keyframes terra-border {
+  0%,
+  100% {
+    border-color: var(--color-amber-base);
+  }
+  50% {
+    border-color: var(--color-terra-base);
+  }
+}
+
+/* ===========================
+   UTILITY CLASSES
+   =========================== */
+.text-gradient-earth {
+  background: linear-gradient(
+    135deg,
+    var(--color-amber-base) 0%,
+    var(--color-gold-light) 50%,
+    var(--color-terra-base) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-earth-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-earth-cream) 0%,
+    var(--color-earth-beige) 50%,
+    var(--color-earth-sand) 100%
+  );
+}
+
+.bg-dark-earth {
+  background: linear-gradient(
+    135deg,
+    var(--color-earth-bark) 0%,
+    var(--color-earth-deep) 50%,
+    var(--color-earth-mid) 100%
+  );
+}
+
+.earth-card {
+  background: rgba(245, 234, 208, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 146, 42, 0.3);
+  border-radius: 16px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.earth-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 60px rgba(92, 58, 30, 0.2),
+    0 0 0 1px rgba(200, 146, 42, 0.4);
+}
+
+.glow-amber {
+  animation: earth-glow-pulse 2.5s ease-in-out infinite;
+}
+
+.float-anim {
+  animation: earth-float 4s ease-in-out infinite;
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--color-amber-base),
+    var(--color-gold-shine),
+    var(--color-amber-base)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: earth-shimmer 3s linear infinite;
 }
