@@ -1,6 +1,7 @@
 <template>
   <header
-    class="bg-white shadow-[0px_0px_16px_rgba(17,_17,_26,_0.1)] py-4 px-4 sm:px-6 relative z-50"
+    class="bg-[#FFFDF7]/95 border-b border-[rgba(200,146,42,0.15)] shadow-[0_4px_24px_rgba(92,58,30,0.08)] backdrop-blur-md py-4 px-4 sm:px-6 relative z-50"
+    style="font-family: 'Inter', sans-serif"
   >
     <div class="max-w-screen-xl mx-auto flex items-center justify-between gap-4">
       <!-- Logo -->
@@ -17,7 +18,7 @@
             <router-link
               v-if="item.route"
               :to="item.route"
-              class="flex items-center gap-2 px-3 py-2 rounded-md font-medium text-slate-900 hover:text-blue-700"
+              class="flex items-center gap-2 px-3 py-2 rounded-md font-medium text-[#3A2210] hover:text-[#C8922A] hover:bg-amber-50/60 transition-all duration-200"
             >
               <i :class="item.icon" />
               <span>{{ $t(item.label) }}</span>
@@ -25,7 +26,7 @@
 
             <button
               v-else
-              class="flex items-center gap-2 px-3 py-2 rounded-md font-medium text-slate-900 hover:text-blue-700"
+              class="flex items-center gap-2 px-3 py-2 rounded-md font-medium text-[#3A2210] hover:text-[#C8922A] hover:bg-amber-50/60 transition-all duration-200"
             >
               <i :class="item.icon" />
               <span>{{ $t(item.label) }}</span>
@@ -35,12 +36,12 @@
             <!-- Submenu -->
             <ul
               v-if="item.items"
-              class="absolute left-0 top-full mt-2 min-w-[200px] bg-white border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition"
+              class="absolute left-0 top-full mt-2 min-w-[200px] bg-[#FFFDF7] border border-[rgba(200,146,42,0.2)] rounded-xl shadow-[0_12px_40px_rgba(92,58,30,0.15)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
             >
               <li v-for="sub in item.items" :key="sub.label">
                 <router-link
                   :to="sub.route"
-                  class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
+                  class="flex items-center gap-2 px-4 py-2.5 hover:bg-amber-50/60 hover:text-[#C8922A] rounded-lg mx-1 transition-colors duration-200"
                 >
                   <i :class="sub.icon" />
                   <span>{{ $t(sub.label) }}</span>
@@ -67,11 +68,7 @@
               class="w-7 h-7 rounded-full overflow-hidden border border-gray-200/60 shadow-sm flex-shrink-0"
             >
               <img
-                :src="
-                  selectedLanguage === 'vi'
-                    ? VNFlag
-                    : UKFlag
-                "
+                :src="selectedLanguage === 'vi' ? VNFlag : UKFlag"
                 alt="flag"
                 class="w-full h-full object-cover"
               />
@@ -110,11 +107,7 @@
                   class="w-10 rounded-md overflow-hidden border border-gray-200/50 shadow-sm flex-shrink-0"
                 >
                   <img
-                    :src="
-                      lang.value === 'vi'
-                        ? VNFlag
-                        : UKFlag
-                    "
+                    :src="lang.value === 'vi' ? VNFlag : UKFlag"
                     alt="flag"
                     class="w-full h-full object-cover"
                   />

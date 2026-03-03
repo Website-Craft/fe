@@ -4,7 +4,7 @@
     <!-- From Uiverse.io by jawad_8494 -->
   </div>
   <div class="w-full flex justify-center mt-6 md:mt-0">
-      <button class="super-button">
+    <button class="super-button">
       <span>{{ $t('COMMON.VIEW_ALL') }}</span>
       <svg fill="none" viewBox="0 0 24 24" class="arrow">
         <path
@@ -16,7 +16,7 @@
         ></path>
       </svg>
     </button>
-    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -25,25 +25,26 @@ import { templates } from '@/data/website_list'
 </script>
 
 <style scoped>
-/* From Uiverse.io by jawad_8494 */
+/* === Mệnh Thổ - Earth Super Button === */
 .super-button {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 14px 28px;
-  background: linear-gradient(145deg, #0f0f0f, #1c1c1c);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 14px 32px;
+  background: linear-gradient(145deg, #3a2210, #5c3a1e);
+  border: 1.5px solid rgba(200, 146, 42, 0.35);
   border-radius: 100px;
-  color: #fff;
-  font-size: 16px;
+  color: #e8c675;
+  font-size: 15px;
   font-weight: 600;
+  font-family: 'Inter', sans-serif;
   letter-spacing: 0.5px;
   cursor: pointer;
   overflow: hidden;
-  transition: all 0.4s ease-in-out;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 30px rgba(92, 58, 30, 0.3);
   backdrop-filter: blur(8px);
   z-index: 1;
 }
@@ -55,34 +56,45 @@ import { templates } from '@/data/website_list'
   left: -50%;
   width: 200%;
   height: 200%;
-  background: conic-gradient(from 0deg, #00ffff, #ff00ff, #00ffff);
-  animation: rotate 4s linear infinite;
+  background: conic-gradient(from 0deg, #c8922a, #d4a849, #b85c38, #c8922a);
+  animation: rotate 5s linear infinite;
   z-index: -2;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.super-button:hover::before {
+  opacity: 1;
 }
 
 .super-button::after {
   content: '';
   position: absolute;
-  inset: 2px;
-  background: #0a0a0a;
+  inset: 1.5px;
+  background: linear-gradient(145deg, #3a2210, #5c3a1e);
   border-radius: inherit;
   z-index: -1;
 }
 
 .super-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 16px 40px rgba(92, 58, 30, 0.4),
+    0 0 0 1px rgba(200, 146, 42, 0.5);
+  border-color: rgba(200, 146, 42, 0.6);
+  color: #fff0c0;
 }
 
 .super-button:hover .arrow {
   transform: translateX(6px);
+  color: #d4a849;
 }
 
 .arrow {
-  width: 22px;
-  height: 22px;
-  transition: transform 0.3s ease-in-out;
-  color: #00ffff;
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
+  color: #c8922a;
 }
 
 @keyframes rotate {
