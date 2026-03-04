@@ -198,10 +198,6 @@ const handleSubscribe = () => {
   setTimeout(() => { subscribed.value = false; email.value = '' }, 3500)
 }
 
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-}
-
 function fparticleStyle(n: number) {
   // Random variables for CSS animation
   const size  = (Math.random() * 3 + 1).toFixed(1)
