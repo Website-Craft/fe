@@ -154,6 +154,12 @@ const thumbTranslateX = computed(() => -(currentIndex.value - 1) * THUMB_W)
 </script>
 
 <style scoped>
+@media (min-width: 300px) {
+  .slide-desc, .slide-title, .slide-cta, .slide-badge {
+    display: none;
+  }
+}
+
 /* =====================
    WRAPPER
 ===================== */

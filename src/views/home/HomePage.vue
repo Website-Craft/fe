@@ -115,6 +115,11 @@ defineOptions({ name: 'HomePage' })
   padding-bottom: 260px;
 }
 
+@media (min-width: 300px) {
+  .hero-section {
+    padding-bottom: 150px;
+  }
+}
 @media (min-width: 768px) {
   .hero-section {
     padding-bottom: 340px;
@@ -237,12 +242,19 @@ defineOptions({ name: 'HomePage' })
 @media (min-width: 768px) {
   .hero-carousel-wrap {
     width: 78%;
+    bottom: -4%;
+  }
+}
+@media (min-width: 300px) {
+  .hero-carousel-wrap {
+    bottom: 5%;
   }
 }
 @media (min-width: 1280px) {
   .hero-carousel-wrap {
     width: 72%;
     max-width: 1100px;
+    bottom: -4%;
   }
 }
 
