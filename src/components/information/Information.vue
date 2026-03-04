@@ -104,17 +104,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { WebName } from '@/constants'
 
 defineOptions({ name: 'InformationComponent' })
 
-const ctaBtn = ref<HTMLElement | null>(null)
 
 function onBtnHover(e: MouseEvent) {
   const btn = e.currentTarget as HTMLElement
   btn.style.transform = 'translateY(-3px) scale(1.03)'
 }
+
 function onBtnLeave(e: MouseEvent) {
   const btn = e.currentTarget as HTMLElement
   btn.style.transform = ''
