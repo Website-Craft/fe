@@ -103,15 +103,6 @@
                   'bg-orange-50/60 text-orange-800 font-medium': selectedLanguage === lang.value,
                 }"
               >
-                <span
-                  class="w-10 rounded-md overflow-hidden border border-gray-200/50 shadow-sm flex-shrink-0"
-                >
-                  <img
-                    :src="lang.value === 'vi' ? VNFlag : UKFlag"
-                    alt="flag"
-                    class="w-full h-full object-cover"
-                  />
-                </span>
                 <span class="text-sm">{{ lang.label }}</span>
               </button>
             </div>
