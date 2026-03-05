@@ -11,27 +11,31 @@
 }
 
 .content-block h4 {
-  color: var(--color-dark-blue);
-  font-size: 1.3rem;
-  margin: 1.8rem 0 0.9rem;
+  color: var(--color-earth-bark);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 2rem 0 1rem;
 }
 
 .content-block ul {
   list-style: none;
-  padding-left: 1.8rem;
+  padding-left: 2rem;
 }
 
 .content-block ul li {
   position: relative;
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
 }
 
 .content-block ul li::before {
-  content: '•';
-  color: var(--color-orange-base);
+  content: '⬥';
+  color: var(--color-gold-base);
   position: absolute;
-  left: -1.4rem;
-  font-size: 1.6rem;
-  line-height: 1;
+  left: -1.8rem;
+  font-size: 1rem;
+  line-height: inherit;
+  display: inline-block;
+  vertical-align: middle;
 }
 </style>

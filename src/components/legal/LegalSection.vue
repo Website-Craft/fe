@@ -1,9 +1,11 @@
 <!-- src/components/lega/LegalSection.vue -->
 <template>
-  <section class="legal-section">
-    <h2 class="section-title">{{ title }}</h2>
-    <div class="section-content">
-      <slot />
+  <section class="legal-section reveal-up">
+    <div class="container mx-auto max-w-5xl">
+      <h2 class="section-title text-gradient-earth">{{ title }}</h2>
+      <div class="section-content earth-card hover-glow">
+        <slot />
+      </div>
     </div>
   </section>
 </template>
@@ -16,14 +18,16 @@ defineProps<{
 
 <style scoped>
 .legal-section {
-  margin: 4.5rem 0;
+  margin: 6rem 0;
+  padding: 0 1.5rem;
 }
 
 .section-title {
-  font-size: 2.1rem;
-  font-weight: 700;
-  color: var(--color-orange-base);
-  margin-bottom: 1.8rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-earth-bark);
+  margin-bottom: 2.5rem;
   position: relative;
   display: inline-block;
 }
@@ -31,21 +35,40 @@ defineProps<{
 .section-title::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -12px;
   left: 0;
-  width: 80px;
+  width: 100px;
   height: 4px;
-  background: var(--color-orange-base);
+  background: linear-gradient(90deg, var(--color-gold-base), transparent);
   border-radius: 2px;
 }
 
 .section-content {
-  background: var(--color-white);
-  border-radius: 16px;
-  padding: 2.2rem 2.5rem;
-  box-shadow: 0 8px 35px rgba(0,0,0,0.06);
-  border: 1px solid var(--color-grey-base);
-  line-height: 1.8;
-  font-size: 1.07rem;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 3rem 3.5rem;
+  border: 1px solid rgba(200, 146, 42, 0.15);
+  line-height: 1.9;
+  font-size: 1.1rem;
+  color: var(--color-earth-mid);
+  box-shadow: 0 20px 50px rgba(92, 58, 30, 0.05);
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .section-content {
+    padding: 2rem;
+  }
 }
 </style>
