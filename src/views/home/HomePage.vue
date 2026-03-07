@@ -46,13 +46,14 @@
       <div class="section-header">
         <div class="section-eyebrow">
           <span class="eyebrow-dot"></span>
-          Kho Template
+          {{ $t('HOME.TEMPLATE_COLLECTION') }}
           <span class="eyebrow-dot"></span>
         </div>
         <h2 class="section-title">
-          Khám phá <span class="title-highlight">1000+</span> mẫu website
+          {{ $t('COMMON.EXPLORE') }} <span class="title-highlight">1000+</span>
+          {{ $t('HOME.TEMPLATE_WEBSITE') }}
         </h2>
-        <p class="section-sub">Được tuyển chọn kỹ lưỡng, thiết kế đẳng cấp cho mọi lĩnh vực</p>
+        <p class="section-sub">{{ $t('HOME.TEMPLATE_SUB') }}</p>
       </div>
       <div class="list-content">
         <website-list />
