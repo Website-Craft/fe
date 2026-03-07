@@ -13,7 +13,7 @@
             :src="item.image"
             class="slide-img"
             :class="{ 'slide-img--zoom': isTransitioning && index === currentIndex }"
-            :alt="item.title"
+            :alt="$t(item.title)"
           />
 
           <!-- Gradient overlay -->
@@ -23,12 +23,12 @@
           <div class="slide-content">
             <div class="slide-badge">
               <span class="slide-badge-dot"></span>
-              Website Template
+              {{ $t('HOME.WEBSITE_TEMPLATE') }}
             </div>
-            <h2 class="slide-title">{{ item.title }}</h2>
-            <p class="slide-desc">{{ item.content }}</p>
+            <h2 class="slide-title">{{ $t(item.title) }}</h2>
+            <p class="slide-desc">{{ $t(item.content) }}</p>
             <button class="slide-cta">
-              <span>Xem chi tiết</span>
+              <span>{{ $t('COMMON.VIEW_DETAILS') }}</span>
               <svg
                 class="cta-arrow"
                 viewBox="0 0 24 24"
@@ -88,9 +88,9 @@
           >
             <!-- Active glow frame -->
             <span v-if="index === currentIndex" class="thumb-glow-frame" aria-hidden="true"></span>
-            <img :src="item.image" class="thumb-img" :alt="item.title" />
+            <img :src="item.image" class="thumb-img" :alt="$t(item.title)" />
             <div class="thumb-overlay-txt" v-if="index === currentIndex">
-              <span class="thumb-active-label">● Đang xem</span>
+              <span class="thumb-active-label">{{ $t('HOME.NOW_VIEWING') }}</span>
             </div>
           </div>
         </div>
@@ -155,7 +155,10 @@ const thumbTranslateX = computed(() => -(currentIndex.value - 1) * THUMB_W)
 
 <style scoped>
 @media (min-width: 300px) {
-  .slide-desc, .slide-title, .slide-cta, .slide-badge {
+  .slide-desc,
+  .slide-title,
+  .slide-cta,
+  .slide-badge {
     display: none;
   }
 }

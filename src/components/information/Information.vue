@@ -26,7 +26,9 @@
         >
           <path d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
-        <span class="badge-text sm:mx-4 whitespace-normal sm:whitespace-nowrap">{{ $t('HOME.TITLE', { name: WebName.WEB_NAME }) }}</span>
+        <span class="badge-text sm:mx-4 whitespace-normal sm:whitespace-nowrap">{{
+          $t('HOME.TITLE', { name: WebName.WEB_NAME })
+        }}</span>
         <svg
           class="badge-arrow"
           viewBox="0 0 24 24"
@@ -84,7 +86,7 @@
           </span>
           <span class="cta-letters">
             <span
-              v-for="(char, i) in 'ViewTemplate'.split('')"
+              v-for="(char, i) in $t('HOME.VIEW_TEMPLATE_WORD').split('')"
               :key="i"
               class="cta-char"
               :style="{ '--ci': i }"
@@ -97,7 +99,7 @@
       <!-- Secondary pill -->
       <div class="info-stats-pill">
         <span class="stats-dot"></span>
-        <span class="stats-txt">Cập nhật liên tục mỗi tuần</span>
+        <span class="stats-txt">{{ $t('HOME.UPDATE_WEEKLY') }}</span>
       </div>
     </div>
   </div>
@@ -107,7 +109,6 @@
 import { WebName } from '@/constants'
 
 defineOptions({ name: 'InformationComponent' })
-
 
 function onBtnHover(e: MouseEvent) {
   const btn = e.currentTarget as HTMLElement
