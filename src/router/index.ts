@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { isLoading } from '@/stores/loadingStore';
+import { isLoading } from '@/stores/loadingStore'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,6 +27,18 @@ const router = createRouter({
       meta: { title: '404 - Not Found' },
     },
     {
+      path: '/products',
+      name: 'ProductPage',
+      component: () => import('@/views/product/ProductPage.vue'),
+      meta: { title: 'Sản Phẩm & Dịch Vụ - Website Craft' },
+    },
+    {
+      path: '/products/:id',
+      name: 'ProductDetailPage',
+      component: () => import('@/views/product/ProductDetailPage.vue'),
+      meta: { title: 'Chi Tiết Template - Website Craft' },
+    },
+    {
       path: '/:pathMatch(.*)*',
       redirect: '/',
     },
@@ -34,14 +46,14 @@ const router = createRouter({
 })
 
 router.beforeEach((_to, _from, next) => {
-  isLoading.value = true;
+  isLoading.value = true
   setTimeout(() => {
-    next();
-  }, 500);
-});
+    next()
+  }, 500)
+})
 
 router.afterEach(() => {
-  isLoading.value = false;
-});
+  isLoading.value = false
+})
 
 export default router

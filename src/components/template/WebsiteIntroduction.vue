@@ -22,9 +22,11 @@
 
         <!-- Main heading -->
         <h2 class="intro-heading">
-          <span class="heading-line heading-line--1">Kiến tạo</span>
-          <span class="heading-line heading-line--2 shimmer-text">Website Đẳng Cấp</span>
-          <span class="heading-line heading-line--3">Cho Thương Hiệu Của Bạn</span>
+          <span class="heading-line heading-line--1">{{ $t('HOME.INTRO.CREATE') }}</span>
+          <span class="heading-line heading-line--2 shimmer-text">{{
+            $t('HOME.INTRO.PREMIUM_WEB')
+          }}</span>
+          <span class="heading-line heading-line--3">{{ $t('HOME.INTRO.FOR_BRAND') }}</span>
         </h2>
 
         <!-- Divider -->
@@ -60,17 +62,7 @@
           </button>
 
           <button class="btn-outline-earth">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              class="btn-outline-icon"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 8v4l3 3" />
-            </svg>
-            Tìm hiểu thêm
+            {{ $t('COMMON.LEARN_MORE') }}
           </button>
         </div>
 
@@ -78,7 +70,7 @@
         <div class="intro-stats">
           <div v-for="stat in stats" :key="stat.label" class="stat-item">
             <span class="stat-number shimmer-text">{{ stat.value }}</span>
-            <span class="stat-label">{{ stat.label }}</span>
+            <span class="stat-label">{{ $t(stat.label) }}</span>
           </div>
         </div>
       </div>
@@ -99,10 +91,10 @@ import { ref } from 'vue'
 defineOptions({ name: 'WebsiteIntroduction' })
 
 const stats = ref([
-  { value: '1000+', label: 'Templates' },
-  { value: '50+', label: 'Lĩnh vực' },
-  { value: '99%', label: 'Hài lòng' },
-  { value: '24/7', label: 'Hỗ trợ' },
+  { value: '1000+', label: 'HOME.STATS.TEMPLATES' },
+  { value: '50+', label: 'HOME.STATS.FIELDS' },
+  { value: '99%', label: 'HOME.STATS.SATISFACTION' },
+  { value: '24/7', label: 'HOME.STATS.SUPPORT' },
 ])
 
 function particleStyle(n: number) {

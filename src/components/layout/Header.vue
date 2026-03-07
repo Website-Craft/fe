@@ -34,7 +34,7 @@
             </button>
 
             <!-- Submenu -->
-            <ul
+            <!-- <ul
               v-if="item.items"
               class="absolute left-0 top-full mt-2 min-w-[200px] bg-[#FFFDF7] border border-[rgba(200,146,42,0.2)] rounded-xl shadow-[0_12px_40px_rgba(92,58,30,0.15)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
             >
@@ -47,7 +47,7 @@
                   <span>{{ $t(sub.label) }}</span>
                 </router-link>
               </li>
-            </ul>
+            </ul> -->
           </li>
         </ul>
       </nav>
@@ -124,7 +124,6 @@
         <ul class="space-y-2">
           <li v-for="item in menuItems" :key="item.label">
             <router-link
-              v-if="item.route"
               :to="item.route"
               @click="toggleMenu"
               class="flex items-center gap-2 px-3 py-2 font-medium"
@@ -133,7 +132,7 @@
               {{ $t(item.label) }}
             </router-link>
 
-            <div v-else>
+            <!-- <div v-else>
               <div class="flex items-center gap-2 px-3 py-2 font-medium">
                 <i :class="item.icon" />
                 {{ $t(item.label) }}
@@ -151,7 +150,7 @@
                   </router-link>
                 </li>
               </ul>
-            </div>
+            </div> -->
           </li>
         </ul>
       </aside>
@@ -187,18 +186,7 @@ const menuItems = [
   {
     label: 'HEADER.PRODUCTS',
     icon: 'pi pi-th-large',
-    items: [
-      {
-        label: 'HEADER.components',
-        icon: 'pi pi-bolt',
-        route: '/projects/components',
-      },
-      {
-        label: 'HEADER.blocks',
-        icon: 'pi pi-server',
-        route: '/projects/blocks',
-      },
-    ],
+    route: '/products',
   },
   {
     label: 'HEADER.LEGAL',

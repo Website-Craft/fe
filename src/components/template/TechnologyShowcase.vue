@@ -13,7 +13,7 @@
       <div class="showcase-header">
         <div class="header-badge">
           <i class="pi pi-server badge-pi"></i>
-          <span>Công nghệ</span>
+          <span>{{ $t('HOME.TECHNOLOGY.BADGE') }}</span>
         </div>
         <h2 class="showcase-title">
           {{ $t('HOME.TECHNOLOGY.TITLE') }}
@@ -59,7 +59,7 @@
       <!-- Bottom CTA strip -->
       <div class="showcase-cta">
         <span class="cta-line"></span>
-        <span class="cta-text">Và nhiều công nghệ hiện đại khác</span>
+        <span class="cta-text">{{ $t('HOME.TECHNOLOGY.MORE_TECH') }}</span>
         <span class="cta-line"></span>
       </div>
     </div>

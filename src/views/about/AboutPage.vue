@@ -9,17 +9,15 @@
     <div class="container mx-auto px-4 py-16 relative z-10">
       <!-- --- HERO SECTION --- -->
       <section class="hero-section text-center mb-24 reveal-up">
-        <div class="eyebrow mb-4">Về Chúng Tôi</div>
-        <h1 class="text-6xl md:text-7xl font-extrabold mb-8 text-gradient-earth leading-tight">
-          Kiến tạo giải pháp số <br />
-          mang tầm vóc tương lai
-        </h1>
+        <div class="eyebrow mb-4">{{ $t('ABOUT.HERO.EYEBROW') }}</div>
+        <h1
+          class="text-6xl md:text-7xl font-extrabold mb-8 text-gradient-earth leading-tight"
+          v-html="$t('ABOUT.HERO.TITLE')"
+        ></h1>
         <p
           class="text-lg md:text-xl text-earth-mid max-w-3xl mx-auto leading-relaxed mb-12 opacity-90"
         >
-          Chào mừng bạn đến với My App, nơi mọi ý tưởng về website và ứng dụng di động đều được hiện
-          thực hóa một cách chỉnh chu và chuyên nghiệp nhất. Chúng tôi tự hào là đội ngũ tiên phong
-          trong việc cung cấp các giải pháp phát triển website và ứng dụng theo yêu cầu.
+          {{ $t('ABOUT.HERO.DESC') }}
         </p>
 
         <div class="hero-img-container earth-card p-2 md:p-3 max-w-5xl mx-auto overflow-hidden">
@@ -49,16 +47,13 @@
 
         <div class="mission-content order-1 md:order-2">
           <h2 class="text-4xl md:text-5xl font-bold text-earth-bark mb-8 premium-border pb-4">
-            Sứ mệnh của chúng tôi
+            {{ $t('ABOUT.MISSION.TITLE') }}
           </h2>
-          <p class="text-earth-mid leading-relaxed mb-6 text-lg">
-            Sứ mệnh của My App là đồng hành cùng bạn trên mọi nẻo đường số hóa, từ việc cung cấp các
-            template website độc đáo, sẵn sàng sử dụng, đến việc phát triển website và ứng dụng di
-            động hoàn toàn theo yêu cầu.
+          <p class="text-earth-mid leading-relaxed text-lg mb-6">
+            {{ $t('ABOUT.MISSION.P1') }}
           </p>
           <p class="text-earth-mid leading-relaxed text-lg">
-            Chúng tôi không ngừng nghiên cứu, học hỏi và áp dụng những công nghệ mới nhất để đảm bảo
-            mọi dự án đều đạt được hiệu suất tối ưu, bảo mật cao và trải nghiệm người dùng mượt mà.
+            {{ $t('ABOUT.MISSION.P2') }}
           </p>
         </div>
       </section>
@@ -66,43 +61,23 @@
       <!-- --- VALUES SECTION --- -->
       <section class="values-section py-20 reveal-up">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-earth-bark mb-6">Giá trị cốt lõi</h2>
+          <h2 class="text-4xl md:text-5xl font-bold text-earth-bark mb-6">
+            {{ $t('ABOUT.VALUES.TITLE') }}
+          </h2>
           <div class="earth-divider-small mx-auto"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <!-- Card 1 -->
-          <div class="value-card earth-card p-10 text-center hover-glow bg-white/40">
+          <div
+            v-for="(val, idx) in valuesList"
+            :key="idx"
+            class="value-card earth-card p-10 text-center hover-glow bg-white/40"
+          >
             <div class="icon-wrap mb-6 text-gradient-earth text-5xl">
-              <i class="pi pi-palette"></i>
+              <i :class="val.icon"></i>
             </div>
-            <h3 class="text-2xl font-bold text-earth-bark mb-4">Sáng tạo & Độc đáo</h3>
-            <p class="text-earth-mid">
-              Mỗi sản phẩm là một tác phẩm nghệ thuật, kết hợp hoàn hảo giữa thẩm mỹ hiện đại và
-              tính ứng dụng cao.
-            </p>
-          </div>
-          <!-- Card 2 -->
-          <div class="value-card earth-card p-10 text-center hover-glow bg-white/40">
-            <div class="icon-wrap mb-6 text-gradient-earth text-5xl">
-              <i class="pi pi-cog"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-earth-bark mb-4">Công nghệ đỉnh cao</h3>
-            <p class="text-earth-mid">
-              Áp dụng mọi công nghệ tiên tiến nhất (Vue, Next.js, Cloudinary...) để đảm bảo sự đột
-              phá tối ưu.
-            </p>
-          </div>
-          <!-- Card 3 -->
-          <div class="value-card earth-card p-10 text-center hover-glow bg-white/40">
-            <div class="icon-wrap mb-6 text-gradient-earth text-5xl">
-              <i class="pi pi-handshake"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-earth-bark mb-4">Tận tâm & Đồng hành</h3>
-            <p class="text-earth-mid">
-              Chúng tôi luôn lắng nghe và đồng hành sát sao từ khâu ý tưởng đến khi vận hành thực
-              tế.
-            </p>
+            <h3 class="text-2xl font-bold text-earth-bark mb-4">{{ $t(val.title) }}</h3>
+            <p class="text-earth-mid">{{ $t(val.desc) }}</p>
           </div>
         </div>
       </section>
@@ -116,28 +91,35 @@
           <span class="cta-glow ha--1 opacity-20"></span>
 
           <div class="relative z-10">
-            <h2 class="text-4xl md:text-6xl font-extrabold mb-8 italic">
-              Sẵn sàng kiến tạo nên <br />
-              sản phẩm số của riêng bạn?
-            </h2>
+            <h2
+              class="text-4xl md:text-6xl font-extrabold mb-8 italic"
+              v-html="$t('ABOUT.CTA.TITLE')"
+            ></h2>
             <p class="text-xl opacity-80 max-w-2xl mx-auto mb-12">
-              Chúng tôi nhận phát triển website và ứng dụng trọn gói. Liên hệ ngay để nhận tư vấn từ
-              chuyên gia.
+              {{ $t('ABOUT.CTA.DESC') }}
             </p>
 
             <div class="flex flex-wrap justify-center gap-6">
-              <a href="tel:0828477808" class="cta-btn btn-gold glass-card-light">
-                <i class="pi pi-phone mr-3"></i> 0828.477.808
+              <a
+                :href="'tel:' + aboutData.cta.contacts.phone.replace(/\D/g, '')"
+                class="cta-btn btn-gold glass-card-light"
+              >
+                <i class="pi pi-phone mr-3"></i> {{ aboutData.cta.contacts.phone }}
               </a>
               <a
-                href="https://zalo.me/0828477808"
+                :href="'https://zalo.me/' + aboutData.cta.contacts.zalo"
                 target="_blank"
                 class="cta-btn btn-green glass-card-light"
               >
-                <i class="pi pi-comment mr-3"></i> Liên hệ Zalo
+                <i class="pi pi-comment mr-3"></i>
+                {{ $t('COMMON.SAVE') === 'Lưu' ? 'Liên hệ Zalo' : 'Contact Zalo' }}
               </a>
-              <a href="mailto:tuandtdeveloper@gmail.com" class="cta-btn btn-white glass-card-light">
-                <i class="pi pi-envelope mr-3"></i> Gửi Email
+              <a
+                :href="'mailto:' + aboutData.cta.contacts.email"
+                class="cta-btn btn-white glass-card-light"
+              >
+                <i class="pi pi-envelope mr-3"></i>
+                {{ $t('COMMON.SAVE') === 'Lưu' ? 'Gửi Email' : 'Send Email' }}
               </a>
             </div>
           </div>
@@ -151,8 +133,11 @@
 import { onMounted } from 'vue'
 import AboutImg1 from '@/assets/images/about/team-working.webp'
 import AboutImg2 from '@/assets/images/about/mission-vision.jpg'
+import { aboutData } from '@/data/about_info'
 
 defineOptions({ name: 'AboutPage' })
+
+const valuesList = aboutData.values.items
 
 onMounted(() => {
   const observer = new IntersectionObserver(
