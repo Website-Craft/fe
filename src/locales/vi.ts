@@ -83,18 +83,15 @@ export default {
     },
     VALUES: {
       TITLE: 'Giá trị cốt lõi',
-      V1: {
-        TITLE: 'Sáng tạo & Độc đáo',
-        DESC: 'Mỗi sản phẩm là một tác phẩm nghệ thuật, kết hợp hoàn hảo giữa thẩm mỹ hiện đại và tính ứng dụng cao.',
-      },
-      V2: {
-        TITLE: 'Công nghệ đỉnh cao',
-        DESC: 'Áp dụng mọi công nghệ tiên tiến nhất (Vue, Next.js, Cloudinary...) để đảm bảo sự đột phá tối ưu.',
-      },
-      V3: {
-        TITLE: 'Tận tâm & Đồng hành',
-        DESC: 'Chúng tôi luôn lắng nghe và đồng hành sát sao từ khâu ý tưởng đến khi vận hành thực tế.',
-      },
+      V1_TITLE: 'Sáng tạo & Độc đáo',
+      V1_DESC:
+        'Mỗi sản phẩm là một tác phẩm nghệ thuật, kết hợp hoàn hảo giữa thẩm mỹ hiện đại và tính ứng dụng cao.',
+      V2_TITLE: 'Công nghệ đỉnh cao',
+      V2_DESC:
+        'Áp dụng mọi công nghệ tiên tiến nhất (Vue, Next.js, Cloudinary...) để đảm bảo sự đột phá tối ưu.',
+      V3_TITLE: 'Tận tâm & Đồng hành',
+      V3_DESC:
+        'Chúng tôi luôn lắng nghe và đồng hành sát sao từ khâu ý tưởng đến khi vận hành thực tế.',
     },
     CTA: {
       TITLE: 'Sẵn sàng kiến tạo nên <br /> sản phẩm số của riêng bạn?',
