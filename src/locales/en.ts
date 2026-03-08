@@ -85,18 +85,14 @@ export default {
     },
     VALUES: {
       TITLE: 'Core Values',
-      V1: {
-        TITLE: 'Creative & Unique',
-        DESC: 'Each product is a work of art, a perfect combination of modern aesthetics and high applicability.',
-      },
-      V2: {
-        TITLE: 'Cutting-edge Tech',
-        DESC: 'Applying all advanced technologies (Vue, Next.js, Cloudinary...) to ensure optimal breakthrough.',
-      },
-      V3: {
-        TITLE: 'Dedicated & Accompanying',
-        DESC: 'We always listen and accompany closely from the idea stage to actual operation.',
-      },
+      V1_TITLE: 'Creative & Unique',
+      V1_DESC:
+        'Each product is a work of art, a perfect combination of modern aesthetics and high applicability.',
+      V2_TITLE: 'Cutting-edge Tech',
+      V2_DESC:
+        'Applying all advanced technologies (Vue, Next.js, Cloudinary...) to ensure optimal breakthrough.',
+      V3_TITLE: 'Dedicated & Accompanying',
+      V3_DESC: 'We always listen and accompany closely from the idea stage to actual operation.',
     },
     CTA: {
       TITLE: 'Ready to create <br /> your own digital product?',
