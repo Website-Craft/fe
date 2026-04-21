@@ -7,6 +7,7 @@ export default {
     EXPLORE: 'Explore',
     LEARN_MORE: 'Learn More',
     VIEW_DETAILS: 'View Details',
+    LANGUAGE: 'Language',
   },
   HEADER: {
     HOME: 'Home',

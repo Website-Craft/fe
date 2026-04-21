@@ -38,12 +38,12 @@
               <li>
                 <strong>Email:</strong>
                 <a
-                  href="mailto:tuandtdeveloper@gmail.com"
+                  :href="`mailto:${CONTACTS.EMAIL}`"
                   class="ml-2 text-gold-dark hover:underline"
-                  >tuandtdeveloper@gmail.com</a
+                  >{{ CONTACTS.EMAIL }}</a
                 >
               </li>
-              <li><strong>Zalo / Hotline:</strong> <span class="ml-2">0828.477.808</span></li>
+              <li><strong>Zalo / Hotline:</strong> <span class="ml-2">{{ CONTACTS.PHONE }}</span></li>
             </ul>
           </LegalContentBlock>
         </LegalSection>
@@ -67,7 +67,7 @@ import LegalContentBlock from '@/components/legal/LegalContentBlock.vue'
 import LegalFooterNote from '@/components/legal/LegalFooterNote.vue'
 import { legalData } from '@/data/legal_info'
 import { onMounted } from 'vue'
-import { WebName } from '@/constants'
+import { WebName, CONTACTS } from '@/constants'
 
 onMounted(() => {
   const observer = new IntersectionObserver(

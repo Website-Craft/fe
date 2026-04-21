@@ -7,6 +7,7 @@ export default {
     EXPLORE: 'Khám phá',
     LEARN_MORE: 'Tìm hiểu thêm',
     VIEW_DETAILS: 'Xem chi tiết',
+    LANGUAGE: 'Ngôn ngữ',
   },
   HEADER: {
     HOME: 'Trang chủ',

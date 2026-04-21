@@ -170,7 +170,7 @@
                 >{{ $t('PRODUCTS.LISTING.FROM') }} ${{ tpl.price }}</span
               >
               <router-link
-                :to="`/products/${tpl.slug}`"
+                :to="ROUTES.PRODUCT_DETAIL.PATH.replace(':id', tpl.slug)"
                 class="text-amber-base hover:text-terra-base font-bold transition-colors flex items-center gap-1"
               >
                 {{ $t('COMMON.VIEW_DETAILS') }} <i class="pi pi-arrow-right text-xs"></i>
@@ -231,11 +231,13 @@
           <p class="text-earth-beige/90 mb-10 max-w-2xl mx-auto text-lg leading-relaxed">
             {{ $t('PRODUCTS.CTA.DESC') }}
           </p>
-          <button
-            class="px-12 py-4 bg-white text-earth-bark font-bold text-lg rounded-full hover:scale-[1.03] transition-transform duration-300 shadow-[0_0_25px_rgba(255,255,255,0.4)] hover:shadow-[0_0_35px_rgba(255,255,255,0.6)]"
-          >
-            {{ $t('PRODUCTS.CTA.CONTACT_TEAM') }}
-          </button>
+          <a :href="SOCIALS.ZALO" target="_blank" class="inline-block">
+            <button
+              class="cursor-pointer px-12 py-4 bg-white text-earth-bark font-bold text-lg rounded-full hover:scale-[1.03] transition-transform duration-300 shadow-[0_0_25px_rgba(255,255,255,0.4)] hover:shadow-[0_0_35px_rgba(255,255,255,0.6)]"
+            >
+              {{ $t('PRODUCTS.CTA.CONTACT_TEAM') }}
+            </button>
+          </a>
         </div>
       </section>
     </div>
@@ -246,6 +248,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import WebsiteItem from '@/components/template/WebsiteItem.vue'
 import { templates } from '@/data/website_list'
+import { ROUTES, SOCIALS } from '@/constants'
 
 const isLoaded = ref(false)
 const scrollY = ref(0)
