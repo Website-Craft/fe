@@ -11,7 +11,7 @@
       <h1 class="text-7xl font-extrabold text-blue-700 mt-6">Looks Like You're Lost!</h1>
       <p class="text-xl text-gray-700 mt-2">We can't seem to find the page you're looking for.</p>
       <router-link
-        to="/"
+        :to="ROUTES.HOME.PATH"
         class="mt-6 inline-block bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg transform transition hover:scale-105 hover:bg-blue-700"
         >Return Home</router-link
       >
@@ -19,6 +19,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { ROUTES } from '@/constants'
 defineOptions({
   name: 'ErrorPage',
 })
