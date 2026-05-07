@@ -1,46 +1,47 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { isLoading } from '@/stores/loadingStore'
+import { ROUTES } from '@/constants/routes'
 
 const router = createRouter({
   history: createWebHistory(),
   scrollBehavior: () => ({ top: 0 }),
   routes: [
     {
-      path: '/',
-      name: 'HomePage',
+      path: ROUTES.HOME.PATH,
+      name: ROUTES.HOME.NAME,
       component: () => import('@/views/home/HomePage.vue'),
     },
     {
-      path: '/about',
-      name: 'AboutPage',
+      path: ROUTES.ABOUT.PATH,
+      name: ROUTES.ABOUT.NAME,
       component: () => import('@/views/about/AboutPage.vue'),
     },
     {
-      path: '/legal',
-      name: 'LegalPage',
+      path: ROUTES.LEGAL.PATH,
+      name: ROUTES.LEGAL.NAME,
       component: () => import('@/views/legal/LegalPage.vue'),
     },
     {
-      path: '/error',
-      name: 'NotFound',
+      path: ROUTES.ERROR.PATH,
+      name: ROUTES.ERROR.NAME,
       component: () => import('@/views/error/ErrorPage.vue'),
       meta: { title: '404 - Not Found' },
     },
     {
-      path: '/products',
-      name: 'ProductPage',
+      path: ROUTES.PRODUCTS.PATH,
+      name: ROUTES.PRODUCTS.NAME,
       component: () => import('@/views/product/ProductPage.vue'),
       meta: { title: 'Sản Phẩm & Dịch Vụ - Website Craft' },
     },
     {
-      path: '/products/:id',
-      name: 'ProductDetailPage',
+      path: ROUTES.PRODUCT_DETAIL.PATH,
+      name: ROUTES.PRODUCT_DETAIL.NAME,
       component: () => import('@/views/product/ProductDetailPage.vue'),
       meta: { title: 'Chi Tiết Template - Website Craft' },
     },
     {
       path: '/:pathMatch(.*)*',
-      redirect: '/',
+      redirect: ROUTES.HOME.PATH,
     },
   ],
 })

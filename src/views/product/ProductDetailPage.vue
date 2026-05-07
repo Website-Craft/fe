@@ -10,11 +10,11 @@
       <div
         class="flex items-center gap-2 text-sm text-earth-mid mb-8 reveal-on-scroll is-visible font-medium"
       >
-        <router-link to="/" class="hover:text-amber-base transition-colors">{{
+        <router-link :to="ROUTES.HOME.PATH" class="hover:text-amber-base transition-colors">{{
           $t('HEADER.HOME')
         }}</router-link>
         <i class="pi pi-angle-right text-xs"></i>
-        <router-link to="/products" class="hover:text-amber-base transition-colors">{{
+        <router-link :to="ROUTES.PRODUCTS.PATH" class="hover:text-amber-base transition-colors">{{
           $t('HEADER.PRODUCTS')
         }}</router-link>
         <i class="pi pi-angle-right text-xs"></i>
@@ -115,7 +115,7 @@
             </div>
 
             <a
-              href="https://zalo.me/YOUR_PHONE_NUMBER"
+              :href="`https://zalo.me/${CONTACTS.ZALO}`"
               target="_blank"
               class="w-full py-4 rounded-xl bg-earth-gradient text-earth-bark font-bold text-lg hover:shadow-xl hover:-translate-y-1 transition-all glow-amber relative overflow-hidden group flex items-center justify-center gap-2 cursor-pointer z-10"
             >
@@ -321,6 +321,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { templates } from '@/data/website_list'
 import { techHighlights } from '@/data/tech_features'
+import { ROUTES, CONTACTS } from '@/constants'
 
 const route = useRoute()
 const tplSlug = route.params.id as string

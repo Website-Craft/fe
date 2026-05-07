@@ -15,7 +15,7 @@
           v-html="$t('ABOUT.HERO.TITLE')"
         ></h1>
         <p
-          class="text-lg md:text-xl text-earth-mid max-w-3xl mx-auto leading-relaxed mb-12 opacity-90"
+          class="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed mb-12 opacity-90"
         >
           {{ $t('ABOUT.HERO.DESC') }}
         </p>
@@ -85,7 +85,7 @@
       <!-- --- CTA SECTION --- -->
       <section class="cta-section mt-20 reveal-up">
         <div
-          class="cta-inner glass-card p-12 md:p-20 rounded-[40px] text-center bg-dark-earth text-white relative overflow-hidden"
+          class="cta-inner glass-card p-12 md:p-20 rounded-[40px] text-center bg-dark-earth text-gray-800 relative overflow-hidden"
         >
           <!-- Decorative elements -->
           <span class="cta-glow ha--1 opacity-20"></span>
@@ -101,13 +101,13 @@
 
             <div class="flex flex-wrap justify-center gap-6">
               <a
-                :href="'tel:' + aboutData.cta.contacts.phone.replace(/\D/g, '')"
+                :href="`tel:${CONTACTS.PHONE_RAW}`"
                 class="cta-btn btn-gold glass-card-light"
               >
-                <i class="pi pi-phone mr-3"></i> {{ aboutData.cta.contacts.phone }}
+                <i class="pi pi-phone mr-3"></i> {{ CONTACTS.PHONE }}
               </a>
               <a
-                :href="'https://zalo.me/' + aboutData.cta.contacts.zalo"
+                :href="`https://zalo.me/${CONTACTS.ZALO}`"
                 target="_blank"
                 class="cta-btn btn-green glass-card-light"
               >
@@ -115,7 +115,7 @@
                 {{ $t('COMMON.SAVE') === 'Lưu' ? 'Liên hệ Zalo' : 'Contact Zalo' }}
               </a>
               <a
-                :href="'mailto:' + aboutData.cta.contacts.email"
+                :href="`mailto:${CONTACTS.EMAIL}`"
                 class="cta-btn btn-white glass-card-light"
               >
                 <i class="pi pi-envelope mr-3"></i>
@@ -134,6 +134,7 @@ import { onMounted } from 'vue'
 import AboutImg1 from '@/assets/images/about/team-working.webp'
 import AboutImg2 from '@/assets/images/about/mission-vision.jpg'
 import { aboutData } from '@/data/about_info'
+import { CONTACTS } from '@/constants'
 
 defineOptions({ name: 'AboutPage' })
 
