@@ -43,6 +43,7 @@
         <div class="intro-actions">
           <button
             class="btn-primary-earth"
+            @click="scrollToProjects"
             @mouseenter="onHoverPrimary"
             @mouseleave="onLeavePrimary"
           >
@@ -61,7 +62,7 @@
             </span>
           </button>
 
-          <button class="btn-outline-earth">
+          <button class="btn-outline-earth" @click="goToAbout">
             {{ $t('COMMON.LEARN_MORE') }}
           </button>
         </div>
@@ -87,8 +88,23 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { ROUTES } from '@/constants'
 
 defineOptions({ name: 'WebsiteIntroduction' })
+
+const router = useRouter()
+
+function scrollToProjects() {
+  const el = document.getElementById('project-list')
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
+function goToAbout() {
+  router.push(ROUTES.ABOUT.PATH)
+}
 
 const stats = ref([
   { value: '1000+', label: 'HOME.STATS.TEMPLATES' },

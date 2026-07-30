@@ -42,7 +42,7 @@
     </div>
 
     <!-- ███████ WEBSITE LIST SECTION ███████ -->
-    <section class="section-list">
+    <section id="project-list" class="section-list">
       <div class="section-header">
         <div class="section-eyebrow">
           <span class="eyebrow-dot"></span>

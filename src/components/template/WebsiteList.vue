@@ -5,11 +5,12 @@
       :key="item.id"
       :src="item.image"
       :title="$t(item.name)"
+      :slug="item.slug"
     />
     <!-- From Uiverse.io by jawad_8494 -->
   </div>
   <div class="w-full flex justify-center mt-6 md:mt-0">
-    <button class="super-button">
+    <button class="super-button" @click="goToProducts">
       <span>{{ $t('COMMON.VIEW_ALL') }}</span>
       <svg fill="none" viewBox="0 0 24 24" class="arrow">
         <path
@@ -27,6 +28,13 @@
 <script setup lang="ts">
 import WebsiteItem from '@/components/template/WebsiteItem.vue'
 import { templates } from '@/data/website_list'
+import { useRouter } from 'vue-router'
+import { ROUTES } from '@/constants'
+
+const router = useRouter()
+const goToProducts = () => {
+  router.push(ROUTES.PRODUCTS.PATH)
+}
 </script>
 
 <style scoped>

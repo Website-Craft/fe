@@ -16,16 +16,23 @@
               {{ $t('PRODUCTS.HERO.DESC') }}
             </p>
             <div class="flex gap-4">
-              <button
-                class="px-8 py-3 bg-earth-gradient text-earth-bark font-semibold rounded-full hover:shadow-lg hover:-translate-y-1 transition-all glow-amber relative overflow-hidden group"
+              <a
+                :href="`https://zalo.me/${CONTACTS.ZALO}`"
+                target="_blank"
+                class="inline-block"
               >
-                <span class="relative z-10">{{ $t('PRODUCTS.HERO.GET_ADVICE') }}</span>
-                <div
-                  class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"
-                ></div>
-              </button>
+                <button
+                  class="px-8 py-3 bg-earth-gradient text-earth-bark font-semibold rounded-full hover:shadow-lg hover:-translate-y-1 transition-all glow-amber relative overflow-hidden group cursor-pointer"
+                >
+                  <span class="relative z-10">{{ $t('PRODUCTS.HERO.GET_ADVICE') }}</span>
+                  <div
+                    class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"
+                  ></div>
+                </button>
+              </a>
               <button
-                class="px-8 py-3 bg-white text-earth-mid font-semibold rounded-full border border-amber-light hover:bg-earth-beige transition-all"
+                @click="scrollToListing"
+                class="px-8 py-3 bg-white text-earth-mid font-semibold rounded-full border border-amber-light hover:bg-earth-beige transition-all cursor-pointer"
               >
                 {{ $t('PRODUCTS.HERO.VIEW_PRICING') }}
               </button>
@@ -122,7 +129,7 @@
       </section>
 
       <!-- TEMPLATE LISTING SECTION -->
-      <section class="mb-24">
+      <section id="template-listing" class="mb-24">
         <div class="flex flex-col md:flex-row justify-between items-end mb-14">
           <div class="reveal-on-scroll" :class="{ 'is-visible': scrollY > 400 }">
             <h2 class="text-3xl font-bold mb-4 text-earth-deep">
@@ -248,11 +255,18 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import WebsiteItem from '@/components/template/WebsiteItem.vue'
 import { templates } from '@/data/website_list'
-import { ROUTES, SOCIALS } from '@/constants'
+import { ROUTES, SOCIALS, CONTACTS } from '@/constants'
 
 const isLoaded = ref(false)
 const scrollY = ref(0)
 const activeCategory = ref('ALL')
+
+const scrollToListing = () => {
+  const el = document.getElementById('template-listing')
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 
 const categories = ['ALL', ...new Set(templates.map((t) => t.category))]
 

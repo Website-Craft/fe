@@ -70,7 +70,7 @@
 
     <!-- ===== CTA BUTTON ===== -->
     <div class="info-cta">
-      <button class="cta-btn" @mouseenter="onBtnHover" @mouseleave="onBtnLeave" ref="ctaBtn">
+      <button class="cta-btn" @click="scrollToProjects" @mouseenter="onBtnHover" @mouseleave="onBtnLeave" ref="ctaBtn">
         <!-- Shimmer sweep -->
         <span class="cta-shimmer" aria-hidden="true"></span>
         <!-- Rotating ring -->
@@ -109,6 +109,13 @@
 import { WebName } from '@/constants'
 
 defineOptions({ name: 'InformationComponent' })
+
+function scrollToProjects() {
+  const el = document.getElementById('project-list')
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 
 function onBtnHover(e: MouseEvent) {
   const btn = e.currentTarget as HTMLElement

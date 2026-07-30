@@ -1,5 +1,9 @@
 import homepageImg from '@/assets/images/carousel/homepage.png'
 import dashboardImg from '@/assets/images/carousel/dashboard-template.png'
+import caitiemkafeImg from '@/assets/images/carousel/caitiemkafe.png'
+import dinhanphongthuysoImg from '@/assets/images/carousel/dinhanphongthuyso.png'
+import phongthuytamducImg from '@/assets/images/carousel/phongthuytamduc.png'
+import taothieponlineImg from '@/assets/images/carousel/taothieponline.png'
 
 export const images = [
   {
@@ -15,12 +19,22 @@ export const images = [
   {
     title: 'HOME.CAROUSEL.TITLE_3',
     content: 'HOME.CAROUSEL.DESC_3',
-    image: 'https://m.yodycdn.com/blog/hinh-nen-thien-nhien-4k-yody-vn-63.jpg',
+    image: caitiemkafeImg,
   },
   {
     title: 'HOME.CAROUSEL.TITLE_4',
     content: 'HOME.CAROUSEL.DESC_4',
-    image:
-      'https://phongvu.vn/cong-nghe/wp-content/uploads/2024/09/130-hinh-nen-may-tinh-4k-19.jpg',
+    image: dinhanphongthuysoImg,
+  },
+  {
+    title: 'HOME.CAROUSEL.TITLE_5',
+    content: 'HOME.CAROUSEL.DESC_5',
+    image: phongthuytamducImg,
+  },
+  {
+    title: 'HOME.CAROUSEL.TITLE_6',
+    content: 'HOME.CAROUSEL.DESC_6',
+    image: taothieponlineImg,
   },
 ]
+

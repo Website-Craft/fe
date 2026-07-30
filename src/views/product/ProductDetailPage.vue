@@ -27,14 +27,15 @@
         <div class="lg:col-span-7 w-full reveal-on-scroll is-visible">
           <!-- Main Image -->
           <div
-            class="relative w-full aspect-video md:aspect-[4/3] rounded-3xl overflow-hidden glass-card-light shadow-[0_20px_40px_rgba(92,58,30,0.1)] group premium-border group-hover:shadow-[0_20px_50px_rgba(200,146,42,0.2)] transition-shadow duration-500 mb-6"
+            class="relative w-full aspect-video md:aspect-[4/3] rounded-3xl overflow-hidden glass-card-light shadow-[0_20px_40px_rgba(92,58,30,0.1)] group premium-border group-hover:shadow-[0_20px_50px_rgba(200,146,42,0.2)] transition-shadow duration-500 mb-6 cursor-pointer"
+            @click="isLightboxOpen = true"
           >
             <transition name="fade" mode="out-in">
               <img
                 :key="activeImage"
                 :src="images[activeImage]"
                 :alt="tpl?.name"
-                class="w-full h-full object-cover object-top transition-transform duration-[20s] ease-linear group-hover:object-bottom"
+                class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
               />
             </transition>
 
@@ -57,7 +58,7 @@
               <span
                 class="px-6 py-3 bg-white/20 backdrop-blur-md text-white rounded-full border border-white/30 font-medium tracking-wide flex items-center gap-2"
               >
-                <i class="pi pi-arrows-alt"></i> {{ $t('PRODUCTS.DETAIL.HOVER_MOVE') }}
+                <i class="pi pi-search-plus"></i> {{ $t('PRODUCTS.DETAIL.CLICK_ZOOM') }}
               </span>
             </div>
           </div>
@@ -180,47 +181,45 @@
         </div>
       </section>
 
-      <!-- DEMO VIDEO SECTION -->
+      <!-- FULL GALLERY SECTION (Replacing Video Demo) -->
       <section class="mb-32 reveal-on-scroll" :class="{ 'is-visible': scrollY > 200 }">
         <div class="text-center mb-10">
           <h2 class="text-3xl font-bold mb-4 text-earth-deep">
-            {{ $t('PRODUCTS.DETAIL.VIDEO_DEMO_TITLE') }}
+            {{ $t('PRODUCTS.DETAIL.GALLERY_TITLE') }}
           </h2>
           <div
             class="w-24 h-1 bg-gradient-to-r from-amber-base to-terra-base mx-auto rounded-full"
           ></div>
         </div>
 
-        <div
-          class="relative max-w-5xl mx-auto rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer bg-dark-earth premium-border"
-        >
+        <div class="space-y-12 max-w-5xl mx-auto">
           <div
-            class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500 z-10 w-full h-full"
-          ></div>
-
-          <!-- Simulated Video Poster Background -->
-          <img
-            :src="tpl?.image || '/images/templates/modern.png'"
-            alt="Video Placeholder"
-            class="w-full aspect-video object-cover opacity-60 group-hover:scale-105 transition-transform duration-[10s]"
-          />
-
-          <div class="absolute inset-0 z-20 flex flex-col items-center justify-center pb-8">
-            <div
-              class="w-24 h-24 rounded-full bg-white/20 backdrop-blur-xl border-2 border-amber-base flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-amber-base/80 transition-all duration-300 shadow-[0_0_30px_rgba(200,146,42,0.5)]"
-            >
-              <i class="pi pi-play text-4xl text-white ml-2"></i>
-            </div>
-            <p class="text-white font-bold tracking-widest uppercase text-sm drop-shadow-md">
-              {{ $t('PRODUCTS.DETAIL.WATCH_INTERACTION') }}
-            </p>
-          </div>
-
-          <div class="absolute bottom-0 inset-x-0 h-2 bg-white/20 z-20">
-            <div class="h-full w-1/3 bg-gradient-to-r from-amber-base to-terra-base relative">
+            v-for="(img, idx) in images"
+            :key="idx"
+            class="rounded-3xl overflow-hidden shadow-2xl glass-card-light border border-amber-light/30 group cursor-pointer relative"
+            @click="openLightboxWithIndex(idx)"
+          >
+            <div class="relative w-full overflow-hidden bg-gray-900">
+              <img
+                :src="img"
+                :alt="`${tpl ? $t(tpl.name) : ''} preview ${idx + 1}`"
+                class="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.01]"
+              />
               <div
-                class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-md"
-              ></div>
+                class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+              >
+                <span
+                  class="px-6 py-3 bg-white/20 backdrop-blur-md text-white rounded-full border border-white/30 font-medium tracking-wide flex items-center gap-2"
+                >
+                  <i class="pi pi-search-plus"></i> {{ $t('PRODUCTS.DETAIL.CLICK_ZOOM') }}
+                </span>
+              </div>
+            </div>
+            <div
+              class="p-4 bg-earth-beige/50 text-center text-sm font-semibold text-earth-dark border-t border-earth-sand/30"
+            >
+              {{ $t('PRODUCTS.DETAIL.INTERFACE_LABEL') }} {{ idx + 1 }} / {{ images.length }} -
+              {{ tpl ? $t(tpl.name) : '' }}
             </div>
           </div>
         </div>
@@ -313,6 +312,37 @@
         </div>
       </section>
     </div>
+
+    <!-- LIGHTBOX MODAL FOR FULL IMAGE VIEW -->
+    <Teleport to="body">
+      <transition name="fade">
+        <div
+          v-if="isLightboxOpen"
+          class="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-8"
+          @click.self="isLightboxOpen = false"
+        >
+          <!-- Close Button -->
+          <button
+            @click="isLightboxOpen = false"
+            class="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all cursor-pointer border border-white/20"
+            aria-label="Close"
+          >
+            <i class="pi pi-times text-xl"></i>
+          </button>
+
+          <!-- Lightbox Content: Full Image Container with scrollable full height -->
+          <div
+            class="relative max-w-6xl w-full max-h-[90vh] overflow-y-auto rounded-2xl bg-dark-earth border border-amber-light/30 shadow-2xl p-2 hide-scrollbar"
+          >
+            <img
+              :src="images[activeImage]"
+              :alt="tpl ? $t(tpl.name) : ''"
+              class="w-full h-auto object-contain rounded-xl block"
+            />
+          </div>
+        </div>
+      </transition>
+    </Teleport>
   </div>
 </template>
 
@@ -332,7 +362,13 @@ const images = computed(() =>
 )
 
 const activeImage = ref(0)
+const isLightboxOpen = ref(false)
 const scrollY = ref(0)
+
+const openLightboxWithIndex = (idx: number) => {
+  activeImage.value = idx
+  isLightboxOpen.value = true
+}
 
 const handleScroll = () => {
   scrollY.value = window.scrollY || document.documentElement.scrollTop

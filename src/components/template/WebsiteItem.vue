@@ -1,9 +1,10 @@
 <template>
   <div
     ref="containerRef"
-    class="relative w-full h-[350px] flex flex-col overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-900"
+    class="relative w-full h-[350px] flex flex-col overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-900 group"
     @mouseenter="startScroll"
     @mouseleave="resetScroll"
+    @click="handleClick"
   >
     <!-- Image Section -->
     <div ref="imageWrapperRef" class="relative h-[250px] overflow-hidden">
@@ -20,15 +21,24 @@
     <!-- Content Section -->
     <div class="flex-grow p-4 bg-white text-gray-700 flex flex-col justify-center border-t border-gray-200">
       <p class="text-xs text-gray-500 mb-1">Template</p>
-      <h3 class="text-lg font-bold truncate">{{ title }}</h3>
+      <h3 class="text-lg font-bold truncate group-hover:text-amber-600 transition-colors">{{ title }}</h3>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { ROUTES } from '@/constants'
 
-defineProps<{ src: string; title?: string }>()
+const props = defineProps<{ src: string; title?: string; slug?: string }>()
+const router = useRouter()
+
+const handleClick = () => {
+  if (props.slug) {
+    router.push(ROUTES.PRODUCT_DETAIL.PATH.replace(':id', props.slug))
+  }
+}
 
 const imageWrapperRef = ref<HTMLElement | null>(null)
 const imageRef = ref<HTMLImageElement | null>(null)
