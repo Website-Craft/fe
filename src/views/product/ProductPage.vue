@@ -172,10 +172,7 @@
             :style="`transition-delay: ${index * 100}ms`"
           >
             <WebsiteItem :src="tpl.image" :title="$t(tpl.name)" />
-            <div class="px-5 pb-5 pt-4 flex justify-between items-center text-sm">
-              <span class="text-earth-mid font-medium"
-                >{{ $t('PRODUCTS.LISTING.FROM') }} ${{ tpl.price }}</span
-              >
+            <div class="px-5 pb-5 pt-4 flex justify-end items-center text-sm">
               <router-link
                 :to="ROUTES.PRODUCT_DETAIL.PATH.replace(':id', tpl.slug)"
                 class="text-amber-base hover:text-terra-base font-bold transition-colors flex items-center gap-1"
