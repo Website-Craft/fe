@@ -1,10 +1,101 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template Websites</title>
+
+    <!-- ═══════════════════════════════════════
+         FAVICON & ICONS
+    ═══════════════════════════════════════ -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/og-image.png" />
+
+    <!-- ═══════════════════════════════════════
+         SEO CƠ BẢN
+    ═══════════════════════════════════════ -->
+    <title>Kho Web & Template Website Chuyên Nghiệp - KhoWeb.shop</title>
+    <meta name="description" content="KhoWeb.shop - Kho 1000+ mẫu template website đẹp, hiện đại, chuẩn SEO. Đa dạng ngành nghề: nhà hàng, spa, bất động sản, thương mại điện tử, công ty..." />
+    <meta name="keywords" content="kho web, template website, mẫu website đẹp, thiết kế website, mua template web, website bán hàng, website công ty, website nhà hàng, website spa, khoweb shop" />
+    <meta name="author" content="KhoWeb.shop" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.khoweb.shop/" />
+
+    <!-- Ngôn ngữ & địa lý (nhắm đến thị trường Việt Nam) -->
+    <meta name="language" content="vi" />
+    <meta name="geo.region" content="VN" />
+    <meta name="geo.placename" content="Việt Nam" />
+
+    <!-- Giao diện trình duyệt -->
+    <meta name="theme-color" content="#c8922a" />
+    <meta name="msapplication-TileColor" content="#c8922a" />
+
+    <!-- Preconnect để tăng tốc tải font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- ═══════════════════════════════════════
+         OPEN GRAPH (Facebook · Zalo · Messenger · LinkedIn)
+    ═══════════════════════════════════════ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.khoweb.shop/" />
+    <meta property="og:site_name" content="KhoWeb.shop" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:title" content="Kho Web & Template Website Chuyên Nghiệp - KhoWeb.shop" />
+    <meta property="og:description" content="KhoWeb.shop - Kho 1000+ mẫu template website đẹp, hiện đại, chuẩn SEO. Đa dạng ngành nghề: nhà hàng, spa, bất động sản, thương mại điện tử, công ty..." />
+    <meta property="og:image" content="https://www.khoweb.shop/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="KhoWeb.shop - Kho Mẫu Website Chuyên Nghiệp" />
+
+    <!-- ═══════════════════════════════════════
+         TWITTER CARD (Twitter · X)
+    ═══════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.khoweb.shop/" />
+    <meta name="twitter:title" content="Kho Web & Template Website Chuyên Nghiệp - KhoWeb.shop" />
+    <meta name="twitter:description" content="KhoWeb.shop - Kho 1000+ mẫu template website đẹp, hiện đại, chuẩn SEO. Đa dạng ngành nghề: nhà hàng, spa, bất động sản, thương mại điện tử, công ty..." />
+    <meta name="twitter:image" content="https://www.khoweb.shop/og-image.png" />
+    <meta name="twitter:image:alt" content="KhoWeb.shop - Kho Mẫu Website Chuyên Nghiệp" />
+
+    <!-- ═══════════════════════════════════════
+         JSON-LD STRUCTURED DATA (Google Rich Results)
+    ═══════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "KhoWeb.shop",
+      "url": "https://www.khoweb.shop/",
+      "description": "Kho 1000+ mẫu template website đẹp, hiện đại, chuẩn SEO, đa dạng ngành nghề.",
+      "inLanguage": "vi-VN",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.khoweb.shop/products?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "KhoWeb.shop",
+      "url": "https://www.khoweb.shop/",
+      "logo": "https://www.khoweb.shop/og-image.png",
+      "description": "Chuyên cung cấp kho template website đẹp, hiện đại, tối ưu SEO.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": "Vietnamese"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="app"></div>
