@@ -252,14 +252,19 @@ const menuItems: MenuNavItem[] = [
     route: ROUTES.HOME.PATH,
   },
   {
-    label: 'HEADER.ABOUT',
-    icon: 'pi pi-star',
-    route: ROUTES.ABOUT.PATH,
-  },
-  {
     label: 'HEADER.PRODUCTS',
     icon: 'pi pi-th-large',
     route: ROUTES.PRODUCTS.PATH,
+  },
+  {
+    label: 'HEADER.SERVICES_RENTAL',
+    icon: 'pi pi-bolt',
+    route: ROUTES.SERVICES_RENTAL.PATH,
+  },
+  {
+    label: 'HEADER.ABOUT',
+    icon: 'pi pi-star',
+    route: ROUTES.ABOUT.PATH,
   },
   {
     label: 'HEADER.LEGAL',

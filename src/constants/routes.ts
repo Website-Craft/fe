@@ -19,6 +19,10 @@ export const ROUTES = {
     PATH: '/products/:id',
     NAME: 'ProductDetailPage',
   },
+  SERVICES_RENTAL: {
+    PATH: '/services/rental',
+    NAME: 'RentalServicePage',
+  },
   ERROR: {
     PATH: '/error',
     NAME: 'NotFound',

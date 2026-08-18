@@ -253,6 +253,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import WebsiteItem from '@/components/template/WebsiteItem.vue'
 import { templates } from '@/data/website_list'
 import { ROUTES, SOCIALS, CONTACTS } from '@/constants'
+import { updateSeoMeta } from '@/utils/seo'
 
 const isLoaded = ref(false)
 const scrollY = ref(0)
@@ -284,6 +285,30 @@ onMounted(() => {
 
   window.addEventListener('scroll', handleScroll, { passive: true })
   handleScroll() // init value to reveal initial sections if scrolled before refresh
+
+  // SEO metadata & ItemList Schema
+  updateSeoMeta({
+    title: 'Kho 1000+ Mẫu Giao Diện Website Đẹp & Chuẩn SEO',
+    description:
+      'Khám phá kho mẫu template website đa ngành nghề: bán hàng online, spa làm đẹp, bất động sản, nhà hàng cafe, doanh nghiệp. Xem demo trực tiếp và bảng giá tại KhoWeb.shop.',
+    keywords:
+      'kho template website, mẫu website bán hàng, template web spa, mẫu web bất động sản, kho theme web, mua template website, khoweb shop',
+    canonicalUrl: '/products',
+    schemaJson: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Kho Mẫu Template Website Chuẩn SEO',
+      description: 'Danh sách các mẫu website thiết kế sẵn cho nhiều ngành nghề.',
+      numberOfItems: templates.length,
+      itemListElement: templates.map((tpl, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: tpl.slug,
+        url: `https://www.khoweb.shop/products/${tpl.slug}`,
+        image: tpl.image,
+      })),
+    },
+  })
 })
 
 onUnmounted(() => {

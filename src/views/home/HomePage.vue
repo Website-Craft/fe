@@ -60,10 +60,16 @@
       </div>
     </section>
 
+    <!-- ███████ PRICING SECTION ███████ -->
+    <rental-pricing-section />
+
     <!-- ███████ TECHNOLOGY SECTION ███████ -->
     <section class="section-tech">
       <technology-showcase />
     </section>
+
+    <!-- ███████ FAQ SECTION ███████ -->
+    <faq-section />
 
     <!-- ███████ BOTTOM BAR ███████ -->
     <div class="hp-bottom-bar" aria-hidden="true"></div>
@@ -71,12 +77,16 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import Banner from '@/components/banner/Banner.vue'
 import Carousel from '@/components/carousel/Carousel.vue'
 import WebsiteList from '@/components/template/WebsiteList.vue'
 import WebsiteIntroduction from '@/components/template/WebsiteIntroduction.vue'
 import TechnologyShowcase from '@/components/template/TechnologyShowcase.vue'
 import Information from '@/components/information/Information.vue'
+import RentalPricingSection from '@/components/template/RentalPricingSection.vue'
+import FaqSection from '@/components/common/FaqSection.vue'
+import { updateSeoMeta } from '@/utils/seo'
 
 import Img1 from '@/assets/images/banners/item01.avif'
 import Img2 from '@/assets/images/banners/item02.avif'
@@ -86,6 +96,66 @@ import Img5 from '@/assets/images/banners/item05.avif'
 import Img6 from '@/assets/images/banners/item06.avif'
 
 defineOptions({ name: 'HomePage' })
+
+onMounted(() => {
+  updateSeoMeta({
+    title: 'Kho Web & Dịch Vụ Thuê Website Chuyên Nghiệp',
+    description:
+      'KhoWeb.shop - Kho 1000+ mẫu template website đẹp, hiện đại, chuẩn SEO. Dịch vụ cho thuê website theo tháng, thiết kế web theo mẫu trọn gói giá rẻ, uy tín.',
+    keywords:
+      'kho web, template website, thuê web, thuê website, thuê website theo tháng, mua template web, mẫu website đẹp, kho giao diện website, thiết kế website theo mẫu, khoweb shop',
+    canonicalUrl: '/',
+    schemaJson: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'KhoWeb.shop',
+        url: 'https://www.khoweb.shop/',
+        description:
+          'Kho 1000+ mẫu template website đẹp, chuẩn SEO và dịch vụ thuê website trọn gói giá rẻ.',
+        inLanguage: 'vi-VN',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: 'https://www.khoweb.shop/products?q={search_term_string}',
+          },
+          'query-input': 'required name=search_term_string',
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'Thuê website là gì và có khác gì so với làm web trọn gói?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Thuê website là hình thức bạn sử dụng mẫu website có sẵn chuẩn SEO chất lượng cao với chi phí trả theo tháng hoặc theo năm cực rẻ mà không cần bỏ ra số vốn lớn ban đầu.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Website tại KhoWeb.shop có chuẩn SEO và tối ưu trên điện thoại không?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: '100% mẫu giao diện tại KhoWeb.shop được lập trình bằng công nghệ hiện đại, tối ưu điểm Google PageSpeed 90+, chuẩn SEO Google và Responsive trên mọi thiết bị.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Thời gian bàn giao website là bao lâu?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Thông thường chỉ trong vòng 12 - 24 giờ sau khi thống nhất mẫu và thông tin, website của bạn sẽ được kích hoạt và chạy chính thức trên Internet.',
+            },
+          },
+        ],
+      },
+    ],
+  })
+})
 </script>
 
 <style scoped>
