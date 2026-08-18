@@ -347,13 +347,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { templates } from '@/data/website_list'
 import { techHighlights } from '@/data/tech_features'
 import { ROUTES, CONTACTS } from '@/constants'
+import { updateSeoMeta } from '@/utils/seo'
 
 const route = useRoute()
+const { t } = useI18n()
 const tplSlug = route.params.id as string
 const tpl = computed(() => templates.find((t) => t.slug === tplSlug) || templates[0])
 
@@ -374,9 +377,73 @@ const handleScroll = () => {
   scrollY.value = window.scrollY || document.documentElement.scrollTop
 }
 
+const applySeo = () => {
+  if (!tpl.value) return
+  const tplName = t(tpl.value.name)
+  const tplCategory = t(tpl.value.category)
+  const tplDesc = t(tpl.value.description)
+
+  updateSeoMeta({
+    title: `${tplName} - Mẫu Website ${tplCategory} Đẹp Chuẩn SEO`,
+    description: `${tplDesc} Xem demo trực tiếp, tùy biến theo thương hiệu và liên hệ nhận báo giá thuê/mua mã nguồn ưu đãi tại KhoWeb.shop.`,
+    keywords: `mẫu website ${tplCategory}, template ${tplCategory}, ${tplName}, mua mẫu web, thuê web, khoweb shop`,
+    canonicalUrl: `/products/${tpl.value.slug}`,
+    ogImage: images.value[0],
+    ogType: 'product',
+    schemaJson: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: tplName,
+        image: images.value,
+        description: tplDesc,
+        brand: {
+          '@type': 'Brand',
+          name: 'KhoWeb.shop',
+        },
+        category: tplCategory,
+        offers: {
+          '@type': 'Offer',
+          url: `https://www.khoweb.shop/products/${tpl.value.slug}`,
+          availability: 'https://schema.org/InStock',
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Trang Chủ',
+            item: 'https://www.khoweb.shop/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Kho Template',
+            item: 'https://www.khoweb.shop/products',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: tplName,
+            item: `https://www.khoweb.shop/products/${tpl.value.slug}`,
+          },
+        ],
+      },
+    ],
+  })
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
   handleScroll() // init value
+  applySeo()
+})
+
+watch(() => route.params.id, () => {
+  applySeo()
 })
 
 onUnmounted(() => {

@@ -38,13 +38,13 @@
         <!-- Logo -->
         <div class="brand-logo-wrap">
           <div class="brand-logo-icon">
-            <span class="logo-letter">W</span>
+            <span class="logo-letter">K</span>
             <span class="logo-ring" aria-hidden="true"></span>
             <span class="logo-ring-inner" aria-hidden="true"></span>
           </div>
           <div class="brand-logo-text">
-            <span class="brand-name shimmer-neon">Website Craft</span>
-            <span class="brand-tagline">Premium Digital Studio</span>
+            <span class="brand-name shimmer-neon">KhoWeb.shop</span>
+            <span class="brand-tagline">Kho Template & Thuê Website</span>
           </div>
         </div>
 
@@ -104,7 +104,7 @@
         <h3 class="footer-col-title">{{ $t('FOOTER.SOLUTIONS') }}</h3>
         <ul class="footer-links">
           <li v-for="svc in services" :key="svc.label">
-            <a :href="svc.href" class="footer-link">
+            <a :href="svc.href" target="_blank" class="footer-link">
               <span class="link-arrow">→</span>
               <span>{{ $t(svc.label) }}</span>
             </a>
@@ -169,15 +169,15 @@
 
       <div class="fb-content">
         <div class="fb-legal flex flex-wrap gap-4 sm:gap-6">
-          <a href="#" class="legal-text">{{ $t('FOOTER.LEGAL_SEC.PRIVACY') }}</a>
-          <a href="#" class="legal-text">{{ $t('FOOTER.LEGAL_SEC.TERMS') }}</a>
-          <a href="#" class="legal-text">{{ $t('FOOTER.LEGAL_SEC.SITEMAP') }}</a>
+          <a :href="ROUTES.LEGAL.PATH" class="legal-text">{{ $t('FOOTER.LEGAL_SEC.PRIVACY') }}</a>
+          <a :href="ROUTES.LEGAL.PATH" class="legal-text">{{ $t('FOOTER.LEGAL_SEC.TERMS') }}</a>
+          <a href="/sitemap.xml" target="_blank" class="legal-text">{{ $t('FOOTER.LEGAL_SEC.SITEMAP') }}</a>
         </div>
 
         <div class="fb-copyright text-center md:text-right">
           <p>
             © <span class="text-[#38BDF8]">{{ currentYear }}</span>
-            <b class="text-white">Website Craft</b>. {{ $t('FOOTER.SYSTEM') }}
+            <b class="text-white">KhoWeb.shop</b>. {{ $t('FOOTER.SYSTEM') }}
           </p>
           <div
             class="mt-1 flex items-center justify-center md:justify-end gap-1.5 opacity-60 text-xs"
@@ -239,16 +239,16 @@ function fparticleStyle(n: number) {
 
 const navLinks = [
   { label: 'FOOTER.LINKS.HOME', href: ROUTES.HOME.PATH },
-  { label: 'FOOTER.LINKS.ABOUT', href: ROUTES.ABOUT.PATH },
   { label: 'FOOTER.LINKS.PROJECTS', href: ROUTES.PRODUCTS.PATH },
-  { label: 'FOOTER.LINKS.CLIENTS', href: '#' },
+  { label: 'FOOTER.LINKS.RENTAL', href: ROUTES.SERVICES_RENTAL.PATH },
+  { label: 'FOOTER.LINKS.ABOUT', href: ROUTES.ABOUT.PATH },
 ]
 
 const services = [
-  { label: 'FOOTER.SVCS.TPL', href: '#' },
-  { label: 'FOOTER.SVCS.CUSTOM', href: '#' },
-  { label: 'FOOTER.SVCS.UIUX', href: '#' },
-  { label: 'FOOTER.SVCS.COMP', href: '#' },
+  { label: 'FOOTER.SVCS.TPL', href: SOCIALS.ZALO },
+  { label: 'FOOTER.SVCS.RENTAL', href: SOCIALS.ZALO },
+  { label: 'FOOTER.SVCS.CUSTOM', href: SOCIALS.ZALO },
+  { label: 'FOOTER.SVCS.UIUX', href: SOCIALS.ZALO },
 ]
 </script>
 
